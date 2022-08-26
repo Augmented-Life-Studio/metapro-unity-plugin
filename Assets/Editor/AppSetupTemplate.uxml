@@ -26,6 +26,8 @@
             </ui:Box>
         
         </ui:Box>
+        <ui:Box name="items">
+        </ui:Box>
 <!--&lt;!&ndash;        <ui:Image name="logo" />&ndash;&gt;-->
 <!--        <ui:Box name="properties">-->
 <!--            <ui:TextField name="appKey" picking-mode="Ignore" label="App-key" value="" text="Enter app key from dev console" />-->

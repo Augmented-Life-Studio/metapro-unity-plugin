@@ -37,8 +37,8 @@ public class AppSetupWindow : EditorWindow
         ShowData();
         
         
-        // var setupButton = rootVisualElement.Query<Button>("setup-button").First();
-        // setupButton.clicked += SetupButtonOnclicked;
+        var setupButton = rootVisualElement.Query<Button>("button").First();
+        setupButton.clicked += SetupButtonOnclicked;
         // setupButton.clicked += () =>
         // {
         //     DownloadFile("C74929DB-89A1-4401-BD08-88AACBB9FAE7");
@@ -76,13 +76,7 @@ public class AppSetupWindow : EditorWindow
 
     private void SetupButtonOnclicked()
     {
-        
         Debug.Log("Clicked setup button");
-        var infoBox = rootVisualElement.Query<Box>("properties").First();
-        Label label = new Label();
-        label.text = "--------------------";
-        infoBox.Add(label);
-        
         EditorCoroutineUtility.StartCoroutine(GetJSON(), this);
     }
 
@@ -106,13 +100,8 @@ public class AppSetupWindow : EditorWindow
                 fileBytes = CombineBytes(fileBytes, fileChunkResponse.Chunk.ToByteArray());
                 
             }
-            // foreach (var fileByte in fileBytes)
-            // {
-            //     Debug.Log("- " + fileByte);
-            // }
-            // File.WriteAllBytes("D:/" + fileResponse.FileName, fileBytes);
+            ByteArrayToFile("/" + fileResponse.FileName, fileBytes);
             Debug.Log("File created");
-            ByteArrayToFile("D:/" + fileResponse.FileName, fileBytes);
         }
     }
     
@@ -144,7 +133,7 @@ public class AppSetupWindow : EditorWindow
     
     protected IEnumerator GetJSON()
     {
-        var appKey = rootVisualElement.Query<TextField>("appKey").First();
+        var appKey = rootVisualElement.Query<TextField>("styled_input").First();
         var appKeyValue = appKey.value;
         
         using (UnityWebRequest www = UnityWebRequest.Get("https://test-api.metaproprotocol.com/ms/apps/v1/apps/appkey/" + appKeyValue))
