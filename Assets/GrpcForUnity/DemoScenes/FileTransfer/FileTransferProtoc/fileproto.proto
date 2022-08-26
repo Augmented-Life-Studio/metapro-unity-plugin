@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+package fileproto;
+
+service FileTransfer{
+	rpc SendFile(stream FileSendInfo) returns (stream FileReceivedReply){}
+}
+
+message FileSendInfo{
+	bytes FileData = 1;
+}
+
+message FileReceivedReply{
+    float Progress = 1;
+}

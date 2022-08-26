@@ -1,0 +1,133 @@
+syntax = "proto3";
+
+package MetaPod;
+
+service Storage {
+  //Method to create new bucket aka folder with owner and returns bucket_hash to upload files
+  rpc CreateBucket (CreateBucketRequest) returns (CreateBucketResponse) {}
+
+  //Returns bucket json response
+  rpc GetBucket (GetBucketRequest) returns (GetBucketResponse) {}
+
+  //Returns bucket preview image
+  rpc GetBucketPreview (GetBucketPreviewRequest) returns (GetBucketPreviewResponse) {}
+
+  //Returns bucket metadata
+  rpc GetBucketMetadata (GetBucketMetadataRequest) returns (GetBucketMetadataResponse) {}
+
+  //Creates file in bucket
+  rpc CreateFile (CreateFileRequest) returns (CreateFileResponse) {}
+
+  //Uploads file as chunks
+  rpc CreateChunk (CreateChunkRequest) returns (CreateChunkResponse) {}
+
+  //Get file metadata
+  rpc GetFileMetadata (GetFileMetadataRequest) returns (GetFileMetadataResponse) {}
+
+  //Download File Chunk
+  rpc GetChunk (GetChunkRequest) returns (GetChunkResponse) {}
+
+  //Returns file as chunk stream
+  rpc GetFile (GetFileRequest) returns (GetFileResponse) {}
+}
+
+message CreateBucketRequest {
+  string address = 1;
+  string properties = 2;
+  string preview = 3;
+  string signature = 4;
+  string app_identifier = 5;
+}
+
+message CreateBucketResponse {
+  string bucket_identifier = 1;
+  string owner = 2;
+}
+
+message GetBucketRequest {
+  string bucket_identifier = 1;
+}
+
+message GetBucketResponse {
+  repeated string files = 1;
+  string owner = 2;
+  string created_at = 3;
+  string preview = 4;
+  string metadata = 5;
+}
+
+message GetBucketPreviewRequest {
+  string bucket_identifier = 1;
+}
+
+message GetBucketPreviewResponse {
+  string contents = 1;
+}
+
+message GetBucketMetadataRequest {
+  string bucket_identifier = 1;
+}
+
+message GetBucketMetadataResponse {
+  string contents = 1;
+}
+
+message CreateFileRequest {
+  string file_name = 1;
+  string mine = 2;
+  string bucket_identifier = 3;
+  string metadata = 4;
+  string checksum = 5;
+  int64 chunk_count = 6;
+  float file_size = 7;
+}
+
+message CreateFileResponse {
+  string file_identifier = 1;
+}
+
+message GetFileRequest {
+  string file_identifier = 1;
+}
+
+message GetFileResponse {
+  string file_name = 2;
+  string mine = 3;
+  string bucket_identifier = 4;
+  string metadata = 5;
+  string checksum = 6;
+  uint64 chunk_count = 7;
+  float file_size = 8;
+  repeated string chunks = 9;
+}
+
+message CreateChunkRequest {
+  uint64 chunk_index = 1;
+  bytes chunk = 2;
+  string checksum = 3;
+  string file_identifier = 4;
+}
+
+message CreateChunkResponse {
+  string chunk_identifier = 1;
+}
+
+message GetFileMetadataRequest {
+  string bucket_identifier = 1;
+  string file_identifier = 2;
+}
+
+message GetFileMetadataResponse {
+  string contents = 1;
+}
+
+message GetChunkRequest {
+  string file_identifier = 1;
+  string chunk_identifier = 2;
+}
+
+message GetChunkResponse {
+  string identifier = 1;
+  bytes chunk = 2;
+  uint64 chunk_index = 3;
+}
