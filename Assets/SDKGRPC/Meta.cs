@@ -42,20 +42,22 @@ namespace MetaPod {
             "BSABKAkSEwoLY2h1bmtfY291bnQYBiABKAMSEQoJZmlsZV9zaXplGAcgASgC",
             "Ii0KEkNyZWF0ZUZpbGVSZXNwb25zZRIXCg9maWxlX2lkZW50aWZpZXIYASAB",
             "KAkiKQoOR2V0RmlsZVJlcXVlc3QSFwoPZmlsZV9pZGVudGlmaWVyGAEgASgJ",
-            "IqkBCg9HZXRGaWxlUmVzcG9uc2USEQoJZmlsZV9uYW1lGAIgASgJEgwKBG1p",
+            "IsUBCg9HZXRGaWxlUmVzcG9uc2USEQoJZmlsZV9uYW1lGAIgASgJEgwKBG1p",
             "bmUYAyABKAkSGQoRYnVja2V0X2lkZW50aWZpZXIYBCABKAkSEAoIbWV0YWRh",
             "dGEYBSABKAkSEAoIY2hlY2tzdW0YBiABKAkSEwoLY2h1bmtfY291bnQYByAB",
-            "KAQSEQoJZmlsZV9zaXplGAggASgCEg4KBmNodW5rcxgJIAMoCSJjChJDcmVh",
-            "dGVDaHVua1JlcXVlc3QSEwoLY2h1bmtfaW5kZXgYASABKAQSDQoFY2h1bmsY",
-            "AiABKAwSEAoIY2hlY2tzdW0YAyABKAkSFwoPZmlsZV9pZGVudGlmaWVyGAQg",
-            "ASgJIi8KE0NyZWF0ZUNodW5rUmVzcG9uc2USGAoQY2h1bmtfaWRlbnRpZmll",
-            "chgBIAEoCSJMChZHZXRGaWxlTWV0YWRhdGFSZXF1ZXN0EhkKEWJ1Y2tldF9p",
-            "ZGVudGlmaWVyGAEgASgJEhcKD2ZpbGVfaWRlbnRpZmllchgCIAEoCSIrChdH",
-            "ZXRGaWxlTWV0YWRhdGFSZXNwb25zZRIQCghjb250ZW50cxgBIAEoCSJECg9H",
-            "ZXRDaHVua1JlcXVlc3QSFwoPZmlsZV9pZGVudGlmaWVyGAEgASgJEhgKEGNo",
-            "dW5rX2lkZW50aWZpZXIYAiABKAkiSgoQR2V0Q2h1bmtSZXNwb25zZRISCgpp",
-            "ZGVudGlmaWVyGAEgASgJEg0KBWNodW5rGAIgASgMEhMKC2NodW5rX2luZGV4",
-            "GAMgASgEMscFCgdTdG9yYWdlEk0KDENyZWF0ZUJ1Y2tldBIcLk1ldGFQb2Qu",
+            "KAQSEQoJZmlsZV9zaXplGAggASgCEioKBmNodW5rcxgJIAMoCzIaLk1ldGFQ",
+            "b2QuQ2h1bmtJbmRleEVsZW1lbnQiYwoSQ3JlYXRlQ2h1bmtSZXF1ZXN0EhMK",
+            "C2NodW5rX2luZGV4GAEgASgEEg0KBWNodW5rGAIgASgMEhAKCGNoZWNrc3Vt",
+            "GAMgASgJEhcKD2ZpbGVfaWRlbnRpZmllchgEIAEoCSIvChNDcmVhdGVDaHVu",
+            "a1Jlc3BvbnNlEhgKEGNodW5rX2lkZW50aWZpZXIYASABKAkiTAoWR2V0Rmls",
+            "ZU1ldGFkYXRhUmVxdWVzdBIZChFidWNrZXRfaWRlbnRpZmllchgBIAEoCRIX",
+            "Cg9maWxlX2lkZW50aWZpZXIYAiABKAkiKwoXR2V0RmlsZU1ldGFkYXRhUmVz",
+            "cG9uc2USEAoIY29udGVudHMYASABKAkiRAoPR2V0Q2h1bmtSZXF1ZXN0EhcK",
+            "D2ZpbGVfaWRlbnRpZmllchgBIAEoCRIYChBjaHVua19pZGVudGlmaWVyGAIg",
+            "ASgJIkoKEEdldENodW5rUmVzcG9uc2USEgoKaWRlbnRpZmllchgBIAEoCRIN",
+            "CgVjaHVuaxgCIAEoDBITCgtjaHVua19pbmRleBgDIAEoBCI8ChFDaHVua0lu",
+            "ZGV4RWxlbWVudBINCgVpbmRleBgBIAEoBBIYChBjaHVua19pZGVudGlmaWVy",
+            "GAIgASgJMscFCgdTdG9yYWdlEk0KDENyZWF0ZUJ1Y2tldBIcLk1ldGFQb2Qu",
             "Q3JlYXRlQnVja2V0UmVxdWVzdBodLk1ldGFQb2QuQ3JlYXRlQnVja2V0UmVz",
             "cG9uc2UiABJECglHZXRCdWNrZXQSGS5NZXRhUG9kLkdldEJ1Y2tldFJlcXVl",
             "c3QaGi5NZXRhUG9kLkdldEJ1Y2tldFJlc3BvbnNlIgASWQoQR2V0QnVja2V0",
@@ -92,7 +94,8 @@ namespace MetaPod {
             new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.GetFileMetadataRequest), global::MetaPod.GetFileMetadataRequest.Parser, new[]{ "BucketIdentifier", "FileIdentifier" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.GetFileMetadataResponse), global::MetaPod.GetFileMetadataResponse.Parser, new[]{ "Contents" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.GetChunkRequest), global::MetaPod.GetChunkRequest.Parser, new[]{ "FileIdentifier", "ChunkIdentifier" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.GetChunkResponse), global::MetaPod.GetChunkResponse.Parser, new[]{ "Identifier", "Chunk", "ChunkIndex" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.GetChunkResponse), global::MetaPod.GetChunkResponse.Parser, new[]{ "Identifier", "Chunk", "ChunkIndex" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MetaPod.ChunkIndexElement), global::MetaPod.ChunkIndexElement.Parser, new[]{ "Index", "ChunkIdentifier" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2859,12 +2862,12 @@ namespace MetaPod {
 
     /// <summary>Field number for the "chunks" field.</summary>
     public const int ChunksFieldNumber = 9;
-    private static readonly pb::FieldCodec<string> _repeated_chunks_codec
-        = pb::FieldCodec.ForString(74);
-    private readonly pbc::RepeatedField<string> chunks_ = new pbc::RepeatedField<string>();
+    private static readonly pb::FieldCodec<global::MetaPod.ChunkIndexElement> _repeated_chunks_codec
+        = pb::FieldCodec.ForMessage(74, global::MetaPod.ChunkIndexElement.Parser);
+    private readonly pbc::RepeatedField<global::MetaPod.ChunkIndexElement> chunks_ = new pbc::RepeatedField<global::MetaPod.ChunkIndexElement>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Chunks {
+    public pbc::RepeatedField<global::MetaPod.ChunkIndexElement> Chunks {
       get { return chunks_; }
     }
 
@@ -4543,6 +4546,232 @@ namespace MetaPod {
           }
           case 24: {
             ChunkIndex = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class ChunkIndexElement : pb::IMessage<ChunkIndexElement>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ChunkIndexElement> _parser = new pb::MessageParser<ChunkIndexElement>(() => new ChunkIndexElement());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ChunkIndexElement> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MetaPod.MetaReflection.Descriptor.MessageTypes[18]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ChunkIndexElement() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ChunkIndexElement(ChunkIndexElement other) : this() {
+      index_ = other.index_;
+      chunkIdentifier_ = other.chunkIdentifier_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ChunkIndexElement Clone() {
+      return new ChunkIndexElement(this);
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 1;
+    private ulong index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "chunk_identifier" field.</summary>
+    public const int ChunkIdentifierFieldNumber = 2;
+    private string chunkIdentifier_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ChunkIdentifier {
+      get { return chunkIdentifier_; }
+      set {
+        chunkIdentifier_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ChunkIndexElement);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ChunkIndexElement other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Index != other.Index) return false;
+      if (ChunkIdentifier != other.ChunkIdentifier) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Index != 0UL) hash ^= Index.GetHashCode();
+      if (ChunkIdentifier.Length != 0) hash ^= ChunkIdentifier.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Index != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Index);
+      }
+      if (ChunkIdentifier.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ChunkIdentifier);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Index != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Index);
+      }
+      if (ChunkIdentifier.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ChunkIdentifier);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Index != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Index);
+      }
+      if (ChunkIdentifier.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChunkIdentifier);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ChunkIndexElement other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Index != 0UL) {
+        Index = other.Index;
+      }
+      if (other.ChunkIdentifier.Length != 0) {
+        ChunkIdentifier = other.ChunkIdentifier;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Index = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            ChunkIdentifier = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Index = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            ChunkIdentifier = input.ReadString();
             break;
           }
         }

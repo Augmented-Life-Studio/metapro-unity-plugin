@@ -1,33 +1,24 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Box name="main_container">
-        <ui:Box name="images">
-            <ui:Box name="gradient">
-                <ui:Image style="--unity-image: url(\images/elipseGradient.png)" name="gradient" />
-            </ui:Box>
-            <ui:Box name="mustache">
-                <ui:Image style="--unity-image: url(\images/mustache.png)" name="mustache" />
-            </ui:Box>
-            <ui:Box name="sword">
-                <ui:Image style="--unity-image: url(\images/sword.png)" name="sword" />
-            </ui:Box>
-            <ui:Box name="hat">
-                <ui:Image style="--unity-image: url(\images/hat.png)" name="hat" />
-            </ui:Box>
-        </ui:Box>
         <ui:Box name="content_container">
             <ui:Image style="--unity-image: url(\images/metaproLogo.png)" name="metapro_logo" />
-            <ui:Label name="text" text="metapro unity wizard" />
-            
-            <ui:Box name="input">
-                <ui:TextField name="styled_input" picking-mode="Ignore" label="" text="Enter app key" />
-                <ui:Label name="paste_input" text="Paste"/> 
+        
+            <ui:Label name="wizard_text" text="unity wizard" />
+
+            <ui:Box class="team_box">
+                <ui:Image class="app_image" name="app_image" />
+                <ui:Label class="app_name" name="app_name" text="App name" />
+                <ui:Label class="team_name" name="team_name" text="Team X"/>
             </ui:Box>
-            <ui:Box name="button_box">
-                <ui:Button name="button" text="Import app"/>
-            </ui:Box>
+            <ui:Button class="change_app_button" name="change_app" text="Change app key" />
         </ui:Box>
-        <ui:Box name="items">
+        <ui:Box class="items">
+            <ui:Label class="items_label" text="Assets" />
+            <ui:ScrollView class="items_list" name="test_view" show-horizontal-scroller="false">
+                
+            </ui:ScrollView>
         </ui:Box>
+        <ui:Button class="download_all_button" name="download_all_button" text="Download all assigned content"/>
 <!--&lt;!&ndash;        <ui:Image name="logo" />&ndash;&gt;-->
 <!--        <ui:Box name="properties">-->
 <!--            <ui:TextField name="appKey" picking-mode="Ignore" label="App-key" value="" text="Enter app key from dev console" />-->

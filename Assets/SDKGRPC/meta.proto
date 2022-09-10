@@ -98,7 +98,7 @@ message GetFileResponse {
   string checksum = 6;
   uint64 chunk_count = 7;
   float file_size = 8;
-  repeated string chunks = 9;
+  repeated ChunkIndexElement chunks = 9;
 }
 
 message CreateChunkRequest {
@@ -130,4 +130,9 @@ message GetChunkResponse {
   string identifier = 1;
   bytes chunk = 2;
   uint64 chunk_index = 3;
+}
+
+message ChunkIndexElement {
+  uint64 index = 1;
+  string chunk_identifier = 2;
 }

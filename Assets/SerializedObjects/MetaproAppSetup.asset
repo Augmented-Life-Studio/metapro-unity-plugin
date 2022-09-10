@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: MetaproAppSetup
   m_EditorClassIdentifier: 
   GameKey: 
+  GameImageURL: 
+  GameName: 
+  TeamName: 

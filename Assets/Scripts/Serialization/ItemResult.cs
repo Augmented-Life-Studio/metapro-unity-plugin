@@ -13,6 +13,7 @@
         public string description;
         public string image;
         public string _bucketHash;
+        public string tokenName;
         // public string properties;
     }
 }
