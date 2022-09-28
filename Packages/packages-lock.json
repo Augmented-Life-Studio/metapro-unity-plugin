@@ -1,7 +1,20 @@
 {
   "dependencies": {
+    "com.endel.nativewebsocket": {
+      "version": "https://github.com/endel/NativeWebSocket.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c5101c07762251edc82caad9e8a39d51b1229c31"
+    },
+    "com.unity.asset-store-tools": {
+      "version": "file:com.unity.asset-store-tools",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
-      "version": "1.15.18",
+      "version": "1.17.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -77,7 +90,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.core": {
-      "version": "1.4.0",
+      "version": "1.4.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
