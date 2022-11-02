@@ -20,7 +20,7 @@
             
             <ui:Box name="input">
                 <ui:TextField name="styled_input" picking-mode="Ignore" label="" text="Enter app key" />
-                <ui:Label name="paste_input" text="Paste"/> 
+                <ui:Button name="paste_input" text="Paste"/> 
             </ui:Box>
             <ui:Box name="button_box">
                 <ui:Button name="button" text="Import app"/>

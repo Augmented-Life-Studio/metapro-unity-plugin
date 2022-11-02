@@ -66,6 +66,8 @@ public class AppSetupWindow : EditorWindow
 
     private void CheckData()
     {
+        EditorUtility.SetDirty(_metaproAppSetup); 
+        AssetDatabase.SaveAssets();
         if (_metaproAppSetup.GameKey != "")
         {
             _hasKeyAssigned = true;
@@ -101,6 +103,11 @@ public class AppSetupWindow : EditorWindow
         var setupButton = rootVisualElement.Query<Button>("button").First();
         setupButton.clicked -= SetupButtonOnclicked;
         setupButton.clicked += SetupButtonOnclicked;
+        
+        var pasteButton = rootVisualElement.Query<Button>("paste_input").First();
+        pasteButton.clicked -= PasteButtonOnClicked;
+        pasteButton.clicked += PasteButtonOnClicked;
+        
     }
 
     private IEnumerator ShowItemsView()
@@ -200,9 +207,17 @@ public class AppSetupWindow : EditorWindow
         listView.contentContainer.Clear();
         CheckData();
         UpdateVisuals();
+        
     }
 
 
+    private void PasteButtonOnClicked()
+    {
+        TextEditor textEditor = new TextEditor();
+        textEditor.Paste();
+        var textField = rootVisualElement.Query<TextField>("styled_input").First();
+        textField.value = textEditor.text;
+    }
     private void SetupButtonOnclicked()
     {
         EditorCoroutineUtility.StartCoroutine(GetAppData(), this);
@@ -240,7 +255,8 @@ public class AppSetupWindow : EditorWindow
             Debug.Log("Asset download completed");
             fileURI = "Assets/Resources/" + fileResponse.FileName;
             EditorCoroutineUtility.StartCoroutine(SendDownloadConfirmation(_metaproAppSetup.AppId, bucketHash, tokenId, itemId, bucketResponseFile), this);
-
+            
+            AssetDatabase.ImportAsset("Assets/Resources/" + tokenId, ImportAssetOptions.ImportRecursive);
         }
 
         return fileURI;

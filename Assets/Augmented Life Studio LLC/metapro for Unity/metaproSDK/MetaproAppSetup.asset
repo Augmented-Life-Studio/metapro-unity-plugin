@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecf2172ab15aae4eb33759dbcef05e8, type: 3}
   m_Name: MetaproAppSetup
   m_EditorClassIdentifier: 
-  GameKey: 
-  GameImageURL: 
-  GameName: 
-  TeamName: 
+  GameKey: c236c882-e6a3-493a-b6c5-666dfc6baaa5
+  AppId: 1aea9899-3f43-4ea6-852a-dddddbbc48c5
+  GameImageURL: https://prdmetaproapps.blob.core.windows.net/gallery/58a1a592-498c-44d6-8a44-6e8cdcf226e6.jpeg
+  GameName: theland
+  TeamName: Augmented Life Studio LLC
+  GameAssets:
+  - Name: MetaDude
+    ImageURL: https://prd-pod-1.metaprotocol.one/0x03e9/preview
+    BucketHash: 316b2156-306f-43de-bd0b-0c9cfe7a589e
+    ItemId: 97c76a03-54b8-41c5-91b3-1e7f3c76ca16
+    TokenId: 1001
