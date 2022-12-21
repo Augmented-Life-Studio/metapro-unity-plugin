@@ -83,6 +83,7 @@ namespace WalletConnectSharp.Unity
         public bool createNewSessionOnSessionDisconnect = true;
         public int connectSessionRetryCount = 3;
         public string customBridgeUrl;
+        public bool isConnectionStarted;
         
         public int chainId = 1;
 
@@ -96,7 +97,7 @@ namespace WalletConnectSharp.Unity
         public WalletConnectEventWithSession NewSessionConnected;
         public WalletConnectEventWithSession ResumedSessionConnected;
 
-        public LoginTest loginTest;
+        // public LoginTest loginTest;
         public WalletConnectUnitySession Session
         {
             get;
@@ -233,7 +234,7 @@ namespace WalletConnectSharp.Unity
                             NewSessionStarted(this, EventArgs.Empty);
                     }
 
-                    loginTest.UpdateLoginText(Session.Key);
+                    // loginTest.UpdateLoginText(Session.Key);
                     StartCoroutine(SetupDefaultWallet());
 
                     SetupEvents();
@@ -296,6 +297,8 @@ namespace WalletConnectSharp.Unity
             {
                 ConnectionStarted(this, EventArgs.Empty);
             }
+
+            isConnectionStarted = true;
             
             WalletConnectEventWithSessionData allEvents = new WalletConnectEventWithSessionData();
                 

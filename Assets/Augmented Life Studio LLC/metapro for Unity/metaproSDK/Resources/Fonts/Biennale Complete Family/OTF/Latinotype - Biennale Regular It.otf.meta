@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: e26dc2d5f208ad845a6ba86f50873bbf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Biennale
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d098c3d7f3c46a94f8ac2c4d18a73b46, type: 3}
+  - {fileID: 12800000, guid: 31a31979ec2b0124b9d5f4aec9038f14, type: 3}
+  - {fileID: 12800000, guid: e109e8ad03180df4aaf396d22f6f8538, type: 3}
+  - {fileID: 12800000, guid: 406094faf09d7c541b4144423b99cfe3, type: 3}
+  - {fileID: 12800000, guid: 6060ad8d2397eb343a4d970ad130ac4c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

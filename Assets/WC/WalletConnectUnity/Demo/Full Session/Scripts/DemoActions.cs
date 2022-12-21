@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using WalletConnectSharp.Core;
@@ -73,8 +74,9 @@ public class DemoActions : WalletConnectActions
 
         resultText.text = results;
         resultText.gameObject.SetActive(true);
+        
     }
-    
+
     public async void OnClickSendTransaction()
     {
         var address = WalletConnect.ActiveSession.Accounts[0];

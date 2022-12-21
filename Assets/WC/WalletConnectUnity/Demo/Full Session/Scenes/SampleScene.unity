@@ -512,8 +512,8 @@ MonoBehaviour:
   connectOnStart: 1
   createNewSessionOnSessionDisconnect: 1
   connectSessionRetryCount: 3
-  customBridgeUrl: https://f.bridge.walletconnect.org
-  chainId: 1
+  customBridgeUrl: https://tst-bridge.metaprotocol.one/
+  chainId: 97
   ConnectedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -580,12 +580,13 @@ MonoBehaviour:
   ResumedSessionConnected:
     m_PersistentCalls:
       m_Calls: []
+  loginTest: {fileID: 0}
   AppData:
-    Description: This is a test of the WalletConnect feature
-    URL: https://app.warriders.com
+    Description: Metapro
+    URL: https://metapromarket.com/
     Icons:
     - https://app.warriders.com/favicon.ico
-    Name: WalletConnect Test
+    Name: metapro
 --- !u!114 &333705139
 MonoBehaviour:
   m_ObjectHideFlags: 0

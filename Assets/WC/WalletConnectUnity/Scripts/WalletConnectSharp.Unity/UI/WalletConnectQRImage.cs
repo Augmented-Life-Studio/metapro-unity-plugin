@@ -29,7 +29,7 @@ public class WalletConnectQRImage : BindableMonoBehavior
     /// Flag to avoid adding additional OnConnectionStarted event handlers every time we disconnect & reconnect to the wallet (i.e. Disable/Enable this component). 
     /// </summary>
     private bool registeredOnConnectionStartEvent = false;
-    
+
     /// <summary>
     /// Unity OnEnable hook.
     /// </summary>
@@ -47,6 +47,10 @@ public class WalletConnectQRImage : BindableMonoBehavior
         {
             registeredOnConnectionStartEvent = true;
             walletConnect.ConnectionStarted += WalletConnectOnConnectionStarted;
+            if (walletConnect.isConnectionStarted)
+            {
+                GenerateQrCode();
+            }
         }
     }
     
