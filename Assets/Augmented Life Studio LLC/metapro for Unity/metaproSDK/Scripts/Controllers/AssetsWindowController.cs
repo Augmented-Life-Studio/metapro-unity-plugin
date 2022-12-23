@@ -46,11 +46,23 @@ namespace metaproSDK.Scripts.Controllers
         private List<NftTokenHolder> userTokenObjects = new List<NftTokenHolder>();
         private List<NftTokenHolder> appTokenObjects = new List<NftTokenHolder>();
         private string _currentCategory = "Category";
-        
+
+        private void Awake()
+        {
+            _userNftsVisible = true;
+        }
+
         private void OnEnable()
         {
             SetupUserData();
-            ShowUserNFT();
+            if (_userNftsVisible)
+            {
+                ShowUserNFT();
+            }
+            else
+            {
+                ShowAppNFT();
+            }
         }
 
         private void SetupUserData()

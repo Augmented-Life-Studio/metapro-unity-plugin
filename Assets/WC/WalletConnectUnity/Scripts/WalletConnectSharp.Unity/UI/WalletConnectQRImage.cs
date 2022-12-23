@@ -66,7 +66,14 @@ public class WalletConnectQRImage : BindableMonoBehavior
         }
         else
         {
-            StartCoroutine(ShowLoader());
+            if (gameObject.activeInHierarchy)
+            {
+                StartCoroutine(ShowLoader());
+            }
+            else
+            {
+                GenerateQrCode();
+            }
         }
         
     }

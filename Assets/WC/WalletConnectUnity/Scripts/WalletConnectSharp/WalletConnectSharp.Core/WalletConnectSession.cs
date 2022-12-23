@@ -161,6 +161,7 @@ namespace WalletConnectSharp.Core
         {
             if (Disconnected)
             {
+                Debug.LogWarning("Session disconnected");
                 throw new IOException(
                     "Session stale! The session has been disconnected. This session cannot be reused.");
             }

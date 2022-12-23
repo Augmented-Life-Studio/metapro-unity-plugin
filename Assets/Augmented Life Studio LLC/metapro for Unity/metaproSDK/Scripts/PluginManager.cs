@@ -50,6 +50,7 @@ namespace metaproSDK.Scripts
 
         public void RequestLogin()
         {
+            userWindowController.ShowLoginWeb3Screen();
             web3Login.RequestLoginSign();
         }
 

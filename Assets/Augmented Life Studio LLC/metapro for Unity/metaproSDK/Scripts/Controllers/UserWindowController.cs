@@ -1,6 +1,7 @@
 ﻿using System;
 using metaproSDK.Scripts.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace metaproSDK.Scripts.Controllers
 {
@@ -8,6 +9,7 @@ namespace metaproSDK.Scripts.Controllers
     {
         [SerializeField] private GameObject providerWindow;
         [SerializeField] private GameObject qrCodeWindow;
+        [SerializeField] private GameObject waitLoginWeb3Window;
         [SerializeField] private AssetsWindowController assetsWindow;
 
         private ScreenType _currentScreenType;
@@ -22,6 +24,7 @@ namespace metaproSDK.Scripts.Controllers
         {
             providerWindow.SetActive(false);
             qrCodeWindow.SetActive(false);
+            waitLoginWeb3Window.SetActive(false);
             assetsWindow.gameObject.SetActive(false);
             _isScreenOpened = false;
         }
@@ -39,6 +42,14 @@ namespace metaproSDK.Scripts.Controllers
             HideAllScreens();
             qrCodeWindow.SetActive(true);
             _currentScreenType = ScreenType.QRCode;
+            _isScreenOpened = true;
+        }
+        
+        public void ShowLoginWeb3Screen()
+        {
+            HideAllScreens();
+            waitLoginWeb3Window.SetActive(true);
+            _currentScreenType = ScreenType.LoginWeb3;
             _isScreenOpened = true;
         }
         
@@ -74,6 +85,9 @@ namespace metaproSDK.Scripts.Controllers
                     break;
                 case ScreenType.QRCode:
                     ShowProviderScreen();
+                    break;
+                case ScreenType.LoginWeb3:
+                    ShowLoginWeb3Screen();
                     break;
                 case ScreenType.Assets:
                     ShowAssetsScreen();

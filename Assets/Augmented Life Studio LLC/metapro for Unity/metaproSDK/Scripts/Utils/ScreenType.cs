@@ -2,6 +2,6 @@
 {
     public enum ScreenType
     {
-        Providers, QRCode, Assets, NFTCard
+        Providers, QRCode, LoginWeb3, Assets, NFTCard
     }
 }

@@ -3,10 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets.GifAssets.PowerGif;
-using B83.Image.GIF;
 using metaproSDK.Scripts;
 using metaproSDK.Scripts.Serialization;
+using metaproSDK.Scripts.Utils;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -62,7 +61,7 @@ public class NftTokenHolder : MonoBehaviour
             Debug.Log("Downloaded Texture");
             Texture texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             _nftTokenData.texture = texture;
-            Sprite sprite = TextureToSprite((Texture2D)texture);
+            Sprite sprite = TextureOperations.TextureToSprite((Texture2D)texture);
             image.sprite = sprite;
             ShowToken(true);
             IsSetupCompleted = true;
@@ -130,6 +129,4 @@ public class NftTokenHolder : MonoBehaviour
             return false;
         }
     }
-
-    public static Sprite TextureToSprite(Texture2D texture) => Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 50f, 0, SpriteMeshType.FullRect);
 }

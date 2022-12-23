@@ -603,10 +603,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8075704595144575133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Script: {fileID: 11500000, guid: 21ccd301ef3c2234a8168d2b2b15c593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 15
+  radius: 8
   image: {fileID: 8075704595144575131}
 --- !u!1 &8075704595264537023
 GameObject:
@@ -1027,3 +1027,4 @@ MonoBehaviour:
   image: {fileID: 8075704595144575131}
   nameText: {fileID: 8075704595418228382}
   amountText: {fileID: 8075704595443192475}
+  IsSetupCompleted: 0

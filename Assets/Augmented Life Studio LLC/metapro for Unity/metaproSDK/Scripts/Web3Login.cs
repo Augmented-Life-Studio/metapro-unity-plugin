@@ -44,17 +44,8 @@ public class Web3Login : MonoBehaviour
         }
 
         _wallet = WalletConnect.ActiveSession.Accounts[0];
-        GetWalletTokens();
     }
 
-    public void GetWalletTokens()
-    {
-        _walletTokens = new List<NftTokenData>();
-        var url = "https://api.metaproprotocol.com/ms/nft/v1/user/" + _wallet +
-                  "/tokens?_items=true&sort%5Btoken.creationBlock%5D=desc";
-        // StartCoroutine(RequestWalletTokens(url));
-        // StartCoroutine(SignLogin());
-    }
 
     public void RequestLoginSign()
     {
