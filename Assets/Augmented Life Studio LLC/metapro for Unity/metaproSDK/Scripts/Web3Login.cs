@@ -93,6 +93,11 @@ public class Web3Login : MonoBehaviour
         login.SetRequestHeader("X-Account-Login-Hash", _hash);
         login.SetRequestHeader("Content-Type", "application/json");
 
+        Debug.LogWarning("---------");
+        Debug.LogWarning("wallet: " + _wallet);
+        Debug.LogWarning("signatuure: " + _loginSignature);
+        Debug.LogWarning("hash: " + _hash);
+        
         yield return login.SendWebRequest();
 
         if (login.result != UnityWebRequest.Result.Success)

@@ -17,6 +17,7 @@ namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
+        [SerializeField] private MetaproAppSetup metaproAppSetup;
         [SerializeField] private Web3Login web3Login;
         [SerializeField] private UserWindowController userWindowController;
 
@@ -86,13 +87,11 @@ namespace metaproSDK.Scripts
             }
 
             var setups = new MetaproAppSetup[guid.Length];
-            for (int i = 0; i < setups.Length; i++)
+            for (var i = 0; i < setups.Length; i++)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid[i]);
                 setups[i] = AssetDatabase.LoadAssetAtPath<MetaproAppSetup>(path);
             }
-
-            var metaproAppSetup = setups[0];
 
             var getAppAssets =
                 UnityWebRequest.Get("https://api.metaproprotocol.com/ms/teams/v1/items?appId=" + metaproAppSetup.AppId);
@@ -102,6 +101,7 @@ namespace metaproSDK.Scripts
             if (getAppAssets.isNetworkError || getAppAssets.isHttpError)
             {
                 Debug.LogError(getAppAssets.error);
+                Debug.LogError(getAppAssets.downloadHandler.text);
                 yield break;
             }
 

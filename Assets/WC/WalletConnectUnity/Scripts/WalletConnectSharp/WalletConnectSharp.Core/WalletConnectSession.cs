@@ -59,6 +59,7 @@ namespace WalletConnectSharp.Core
                 var keyEncoded = WebUtility.UrlEncode(_key);
 
                 return "wc:" + topicEncode + "@" + versionEncode + "?bridge=" + bridgeUrlEncode + "&key=" + keyEncoded;
+                // return "metapro://wc?uri=wc:" + topicEncode + "@" + versionEncode + "?bridge=" + bridgeUrlEncode + "&key=" + keyEncoded;
             }
         }
         
@@ -115,10 +116,10 @@ namespace WalletConnectSharp.Core
 
             bridgeUrl = DefaultBridge.GetBridgeUrl(bridgeUrl);
             
-            if (bridgeUrl.StartsWith("https"))
-                bridgeUrl = bridgeUrl.Replace("https", "wss");
-            else if (bridgeUrl.StartsWith("http"))
-                bridgeUrl = bridgeUrl.Replace("http", "ws");
+            // if (bridgeUrl.StartsWith("https"))
+            //     bridgeUrl = bridgeUrl.Replace("https", "wss");
+            // else if (bridgeUrl.StartsWith("http"))
+            //     bridgeUrl = bridgeUrl.Replace("http", "ws");
             
             this.DappMetadata = clientMeta;
             this.ChainId = chainId;

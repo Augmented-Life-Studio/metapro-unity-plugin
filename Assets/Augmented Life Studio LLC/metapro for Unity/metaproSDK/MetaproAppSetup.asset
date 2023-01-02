@@ -12,9 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecf2172ab15aae4eb33759dbcef05e8, type: 3}
   m_Name: MetaproAppSetup
   m_EditorClassIdentifier: 
-  GameKey: 
-  AppId: 
-  GameImageURL: 
-  GameName: 
-  TeamName: 
-  GameAssets: []
+  GameKey: 2e156ec6-8c57-4114-890d-9904a0ceb3be
+  AppId: 74d4bcab-352f-492d-adf4-72161847f4f4
+  GameImageURL: https://prdmetaproapps.blob.core.windows.net/gallery/8dd517d5-8f9b-4064-b9fa-031bb3aca134.jpeg
+  GameName: 2D fighter
+  TeamName: GoodGameTeam
+  GameAssets:
+  - Name: The Simples GAMES - 012
+    ImageURL: https://prd-pod-1.metaprotocol.one/0x0415/preview
+    BucketHash: 463fb233-29da-43b1-8e4f-01238099712a
+    ItemId: 6c7d81c6-08c8-4024-9bd3-fc113708b9fb
+    TokenId: 1045
+  - Name: The Simples GAMES - 011
+    ImageURL: https://prd-pod-1.metaprotocol.one/0x0414/preview
+    BucketHash: bcb428a9-d1e7-4525-b090-c8235577052d
+    ItemId: 8818a075-544c-4aa0-bd53-a3ab8acb3436
+    TokenId: 1044
