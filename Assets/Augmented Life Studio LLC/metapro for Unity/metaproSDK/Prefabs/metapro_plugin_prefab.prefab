@@ -32,7 +32,7 @@ RectTransform:
   - {fileID: 7543284930030748654}
   - {fileID: 544066812105099910}
   m_Father: {fileID: 4752233201367218560}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2967800838202236053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449714247207039749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -787,6 +787,7 @@ MonoBehaviour:
   qrCodeWindow: {fileID: 4752233201367218561}
   waitLoginWeb3Window: {fileID: 4752233202533565870}
   assetsWindow: {fileID: 4752233202864941318}
+  qrCodeImage: {fileID: 4752233202369497235}
 --- !u!1 &4752233201123790611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,9 +2789,9 @@ RectTransform:
   m_Father: {fileID: 4752233201666448189}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52, y: -32}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4752233201349182660
@@ -3004,7 +3005,6 @@ RectTransform:
   - {fileID: 4752233201430462119}
   - {fileID: 4752233201687054080}
   - {fileID: 4752233202885932259}
-  - {fileID: 4752233202528067468}
   - {fileID: 4752233202369497232}
   - {fileID: 5076465949489116099}
   m_Father: {fileID: 4752233201123790703}
@@ -3107,7 +3107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4752233201399159961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3124,10 +3124,10 @@ RectTransform:
   m_Father: {fileID: 4752233202410504607}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 64}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 134.5, y: -224}
+  m_SizeDelta: {x: 269, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4752233201399159960
 MonoBehaviour:
@@ -4572,8 +4572,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4752233203192196882}
-        m_TargetAssemblyTypeName: Web3Login, Assembly-CSharp
+      - m_Target: {fileID: 4752233201678361228}
+        m_TargetAssemblyTypeName: metaproSDK.Scripts.PluginManager, Assembly-CSharp
         m_MethodName: DisconnectWallet
         m_Mode: 1
         m_Arguments:
@@ -4617,123 +4617,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4752233201531084497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4752233201531084498}
-  - component: {fileID: 4752233201531084499}
-  - component: {fileID: 4752233201531084496}
-  m_Layer: 0
-  m_Name: WalletConnect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4752233201531084498
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233201531084497}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 310.66574, y: 172.9639, z: -494.11447}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4752233201678361231}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4752233201531084499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233201531084497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17303ab972a16184e8ba0066d294c7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4752233201531084496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233201531084497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 801bffbf4c62cc244b55ea230d19649d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultWallet: 1
-  usePinKey: 0
-  retryOnTimeout: 1
-  autoSaveAndResume: 1
-  connectOnAwake: 0
-  connectOnStart: 1
-  createNewSessionOnSessionDisconnect: 1
-  connectSessionRetryCount: 3
-  customBridgeUrl: https://tst-bridge.metaprotocol.one/
-  isConnectionStarted: 0
-  chainId: 56
-  ConnectedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4752233201678361228}
-        m_TargetAssemblyTypeName: metaproSDK.Scripts.PluginManager, Assembly-CSharp
-        m_MethodName: RequestLogin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ConnectedEventSession:
-    m_PersistentCalls:
-      m_Calls: []
-  DisconnectedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4752233201096783977}
-        m_TargetAssemblyTypeName: metaproSDK.Scripts.Controllers.UserWindowController,
-          Assembly-CSharp
-        m_MethodName: ShowProviderScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ConnectionFailedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  NewSessionConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  ResumedSessionConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  AppData:
-    Description: Metapro market
-    URL: https://metapromarket.com/
-    Icons:
-    - 
-    Name: Metapro
 --- !u!1 &4752233201542828818
 GameObject:
   m_ObjectHideFlags: 0
@@ -5455,8 +5338,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4752233201096783976}
-  - {fileID: 4752233203192196883}
-  - {fileID: 4752233201531084498}
   m_Father: {fileID: 4752233201506885013}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5473,8 +5354,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaproAppSetup: {fileID: 11400000, guid: 82c765a5b4682d84da66e5d743d3e682, type: 2}
-  web3Login: {fileID: 4752233203192196882}
   userWindowController: {fileID: 4752233201096783977}
+  providerPrefabs:
+  - {fileID: 7997733803029271061, guid: b944ad24a3221fd4e9fbb76c8dee7b94, type: 3}
+  - {fileID: 2357128120600980763, guid: 40ea13b26c7e37d4a96c9c498235f4ae, type: 3}
+  - {fileID: 4429277997447798935, guid: 1c35172c88386cb4bbdb6160bb1e5104, type: 3}
   chainsSprites:
   - type: 0
     sprite: {fileID: 21300000, guid: 0d9e34a5319687a4fa26e4d54101c2a5, type: 3}
@@ -5484,6 +5368,13 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: e8a4dfe98db9c654a8ff2b6ac7549270, type: 3}
   - type: 3
     sprite: {fileID: 0}
+  walletsSprites:
+  - type: 0
+    sprite: {fileID: 21300000, guid: 14a4cf189bbd8974bb16c67f2d97d5a1, type: 3}
+  - type: 1
+    sprite: {fileID: 21300000, guid: 7caf8cccf22f4dd4894d49f628c0cb44, type: 3}
+  - type: 3
+    sprite: {fileID: 21300000, guid: 200c0204298c5c343ab6c2b72353bdc2, type: 3}
   activeBadgeColor: {r: 0.46666667, g: 0.3882353, b: 0.9647059, a: 1}
   inActiveBadgeColor: {r: 0.22745098, g: 0.32156864, b: 0.49411765, a: 1}
 --- !u!1 &4752233201687054081
@@ -8805,9 +8696,9 @@ RectTransform:
   m_Father: {fileID: 4752233201666448189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 163, y: -32}
   m_SizeDelta: {x: 150, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4752233202021298118
@@ -12300,10 +12191,9 @@ GameObject:
   - component: {fileID: 4752233202369497232}
   - component: {fileID: 4752233202369497234}
   - component: {fileID: 4752233202369497235}
-  - component: {fileID: 4752233202369497325}
   - component: {fileID: 4752233202369497324}
   m_Layer: 5
-  m_Name: QR_code
+  m_Name: WalletConnect_QR_code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12322,7 +12212,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4752233201367218560}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12367,20 +12257,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4752233202369497325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233202369497233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76715672e638354bb16f1a0cf190f15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loader: {fileID: 4752233202528067469}
-  walletConnect: {fileID: 4752233201531084496}
 --- !u!114 &4752233202369497324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13778,42 +13654,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4752233202528067469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4752233202528067468}
-  m_Layer: 5
-  m_Name: QR_code_loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4752233202528067468
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233202528067469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4752233201367218560}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4752233202533565870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14681,6 +14521,7 @@ GameObject:
   - component: {fileID: 4752233202640704727}
   - component: {fileID: 4752233202640704724}
   - component: {fileID: 4752233202640704726}
+  - component: {fileID: 8773762069169675186}
   m_Layer: 5
   m_Name: Wallet_provider_image
   m_TagString: Untagged
@@ -14760,6 +14601,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 12
   image: {fileID: 4752233202640704724}
+--- !u!114 &8773762069169675186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752233202640704730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eef73fd7b8248f6913bd93f5a3db015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4752233202672858346
 GameObject:
   m_ObjectHideFlags: 0
@@ -19021,8 +18874,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4752233203192196882}
-        m_TargetAssemblyTypeName: Web3Login, Assembly-CSharp
+      - m_Target: {fileID: 4752233201678361228}
+        m_TargetAssemblyTypeName: metaproSDK.Scripts.PluginManager, Assembly-CSharp
         m_MethodName: DisconnectWallet
         m_Mode: 1
         m_Arguments:
@@ -20251,56 +20104,6 @@ RectTransform:
   m_AnchoredPosition: {x: 224.5, y: -13.5}
   m_SizeDelta: {x: 449, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &4752233203192196880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4752233203192196883}
-  - component: {fileID: 4752233203192196882}
-  m_Layer: 0
-  m_Name: Web3_login
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4752233203192196883
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233203192196880}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4752233201678361231}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4752233203192196882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4752233203192196880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2ed4a287675974cb6ecf5a8435221f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  providersScreenObject: {fileID: 4752233201367218561}
-  qrCodeScreenObject: {fileID: 4752233201318373316}
-  walletScreenObject: {fileID: 4752233202864941316}
-  nftScreenObject: {fileID: 0}
-  tokensParent: {fileID: 4752233201789966984}
-  tokenPrefab: {fileID: 5163330248212108120, guid: fac60731661d0514bb1ecde96314a5fb, type: 3}
 --- !u!1 &4752233203215271156
 GameObject:
   m_ObjectHideFlags: 0

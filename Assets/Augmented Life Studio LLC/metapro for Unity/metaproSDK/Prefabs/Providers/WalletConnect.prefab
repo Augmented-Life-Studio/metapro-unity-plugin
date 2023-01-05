@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5981920230686948425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6192206236077588129}
+  - component: {fileID: 3768953951372796954}
+  - component: {fileID: 1744901065408714847}
+  - component: {fileID: 4429277997447798935}
+  m_Layer: 0
+  m_Name: WalletConnect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6192206236077588129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981920230686948425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3768953951372796954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981920230686948425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17303ab972a16184e8ba0066d294c7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1744901065408714847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981920230686948425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801bffbf4c62cc244b55ea230d19649d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultWallet: 2
+  usePinKey: 0
+  retryOnTimeout: 1
+  autoSaveAndResume: 1
+  connectOnAwake: 0
+  connectOnStart: 1
+  createNewSessionOnSessionDisconnect: 1
+  connectSessionRetryCount: 3
+  customBridgeUrl: 
+  isConnectionStarted: 0
+  chainId: 56
+  ConnectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ConnectedEventSession:
+    m_PersistentCalls:
+      m_Calls: []
+  DisconnectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ConnectionFailedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  NewSessionConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  ResumedSessionConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  AppData:
+    Description: Metapro market
+    URL: https://metapromarket.com/
+    Icons:
+    - 
+    Name: Metapro
+--- !u!114 &4429277997447798935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981920230686948425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc06c9faa2f4015b5a303c2e78a925b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProviderType: 3

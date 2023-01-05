@@ -18,15 +18,24 @@ namespace metaproSDK.Scripts
     public class PluginManager : Singleton<PluginManager>
     {
         [SerializeField] private MetaproAppSetup metaproAppSetup;
-        [SerializeField] private Web3Login web3Login;
         [SerializeField] private UserWindowController userWindowController;
 
+        [SerializeField] private List<ProviderController> providerPrefabs;
+        
         [Serializable]
         public struct ChainSprite {
             public ChainType type;
             public Sprite sprite;
         }
         public List<ChainSprite> chainsSprites;
+        
+        [Serializable]
+        public struct WalletSprite {
+            public WalletProviderType type;
+            public Sprite sprite;
+        }
+        public List<WalletSprite> walletsSprites;
+        public Sprite GetSelectedWalletSprite => walletsSprites.First(p => p.type == selectedWalletProvider).sprite;
 
         public Color activeBadgeColor;
         public Color inActiveBadgeColor;
@@ -38,23 +47,30 @@ namespace metaproSDK.Scripts
 
         public NftTokenData selectedNft;
         private WalletProviderType selectedWalletProvider;
+        public WalletProviderType SelectedWalletProvider => selectedWalletProvider;
+        private ProviderController _providerController;
+        
 
         private void Start()
         {
             userNfts = new List<NftTokenData>();
             applicationNfts = new List<NftTokenData>();
             StartCoroutine(GetApplicationNFT());
-            
-            // RequestLogin();
         }
 
 
-        public void RequestLogin()
+        public void OnWalletConnected()
         {
             userWindowController.ShowLoginWeb3Screen();
-            web3Login.RequestLoginSign();
+            _providerController.RequestSign();
         }
 
+        public void ClearCurrentProvider()
+        {
+            Destroy(_providerController.gameObject);
+            _providerController = null;
+        }
+        
         public void SetupUserData(UserData userData)
         {
             _userData = new UserData();
@@ -73,28 +89,7 @@ namespace metaproSDK.Scripts
 
         public IEnumerator GetApplicationNFT()
         {
-            var guid = AssetDatabase.FindAssets("t:MetaproAppSetup");
-            if (guid.Length == 0)
-            {
-                Debug.LogError("MetaproAppSetup not found");
-                yield break;
-            }
-
-            if (guid.Length > 1)
-            {
-                Debug.LogError("Only one instance of MetaproAppSetup can persist in project");
-                yield break;
-            }
-
-            var setups = new MetaproAppSetup[guid.Length];
-            for (var i = 0; i < setups.Length; i++)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid[i]);
-                setups[i] = AssetDatabase.LoadAssetAtPath<MetaproAppSetup>(path);
-            }
-
-            var getAppAssets =
-                UnityWebRequest.Get("https://api.metaproprotocol.com/ms/teams/v1/items?appId=" + metaproAppSetup.AppId);
+            var getAppAssets = UnityWebRequest.Get("https://api.metaproprotocol.com/ms/teams/v1/items?appId=" + metaproAppSetup.AppId);
 
             yield return getAppAssets.SendWebRequest();
 
@@ -197,7 +192,19 @@ namespace metaproSDK.Scripts
         public void ShowProviderLogin(WalletProviderType walletProviderType)
         {
             selectedWalletProvider = walletProviderType;
-            userWindowController.ShowQRCodeScreen();
+            _providerController = Instantiate(providerPrefabs.First(p => p.ProviderType == selectedWalletProvider), transform);
+            _providerController.ShowConnection();
+        }
+
+        public void ShowQRCodeScreen(Sprite qrCodeSprite)
+        {
+            userWindowController.ShowQRCodeScreen(qrCodeSprite);
+        }
+
+        public void DisconnectWallet()
+        {
+            _providerController.DisconnectWallet();
+            userWindowController.ShowProviderScreen();
         }
     }
 }
