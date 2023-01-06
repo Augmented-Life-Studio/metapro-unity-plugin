@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Threading.Tasks;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;

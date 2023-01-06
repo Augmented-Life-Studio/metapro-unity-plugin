@@ -2,16 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using metaproSDK.Scripts.Controllers;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
 using Newtonsoft.Json;
 using Serialization;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
-using WalletConnectSharp.Unity;
 
 namespace metaproSDK.Scripts
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using metaproSDK.Scripts.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace metaproSDK.Scripts.Controllers

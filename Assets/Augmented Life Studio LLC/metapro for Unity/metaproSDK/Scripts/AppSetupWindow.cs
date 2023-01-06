@@ -2,19 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
 using Grpc.Core;
 using MetaPod;
 using metaproSDK.Scripts.Serialization;
 using Newtonsoft.Json;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
-using Object = System.Object;
 
 public class AppSetupWindow : EditorWindow
 {
@@ -177,6 +173,7 @@ public class AppSetupWindow : EditorWindow
             Debug.Log(www.downloadHandler.error);
             imageToAssign.visible = false;
             imageToAssign.SetEnabled(false);
+            EditorCoroutineUtility.StartCoroutine(GetGifData(url, imageToAssign), this);
         }
         else
         {
@@ -184,6 +181,52 @@ public class AppSetupWindow : EditorWindow
             imageToAssign.visible = true;
             Texture texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             imageToAssign.image = texture;
+        }
+    }
+    
+    private IEnumerator GetGifData(string url, Image imageToAssign)
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url);
+        yield return www.SendWebRequest();
+        Debug.Log("Downloading preview GIF for image: " + url);
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+            Debug.Log(www.downloadHandler.error);
+        }
+        else
+        { 
+            Debug.Log("Downloaded GIF texture");
+            var fileId = url.Split('/')[3];
+            var relativePath = "Assets/Resources/downloadedGif_" + fileId + ".gif";
+            ByteArrayToFile(relativePath, www.downloadHandler.data);
+            AssetDatabase.ImportAsset(relativePath);
+            AssetDatabase.Refresh();
+            TextureImporter importer = (TextureImporter)TextureImporter.GetAtPath(relativePath);
+ 
+            importer.isReadable = true;
+            importer.textureType = TextureImporterType.Sprite;
+            
+            TextureImporterSettings importerSettings = new TextureImporterSettings();
+            importer.ReadTextureSettings(importerSettings);
+            importerSettings.textureType = TextureImporterType.Sprite;
+            importerSettings.spriteExtrude = 0;
+            importerSettings.spriteGenerateFallbackPhysicsShape = false;
+            importerSettings.spriteMeshType = SpriteMeshType.FullRect;
+            importerSettings.spriteMode = (int)SpriteImportMode.Single;
+            importer.SetTextureSettings(importerSettings);
+            importer.spriteImportMode = SpriteImportMode.Single;
+            importer.maxTextureSize = 1024;
+            importer.alphaIsTransparency = true;
+            importer.textureCompression = TextureImporterCompression.Uncompressed;
+            importer.alphaSource = TextureImporterAlphaSource.FromInput;
+            EditorUtility.SetDirty(importer);
+            
+            importer.SaveAndReimport();
+            Sprite spriteImage = (Sprite)AssetDatabase.LoadAssetAtPath(relativePath, typeof(Sprite));
+            imageToAssign.image = spriteImage.texture;
+            imageToAssign.SetEnabled(true);
+            imageToAssign.visible = true;
         }
     }
 
