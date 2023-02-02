@@ -1,18 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
 using UnityEngine;
 using WalletConnectSharp.Core.Models;
 using WalletConnectSharp.Unity;
+using WalletConnectSharp.Unity.Models;
 
 namespace metaproSDK.Scripts.Controllers
 {
     public class WalletConnectProviderController : ProviderController
     {
-
         private WalletConnect _walletConnect;
-        
+
         public override void Initialize()
         {
             _walletConnect = GetComponent<WalletConnect>();
@@ -40,6 +41,10 @@ namespace metaproSDK.Scripts.Controllers
         {
             yield return new WaitUntil(() => _walletConnect != null && _walletConnect.isConnectionStarted);
             var qrCodeSprite = QRCodeImamgeHandler.GenerateQRCode(_walletConnect.Session.URI);
+#if UNITY_ANDROID
+            yield return new WaitUntil(() => _walletConnect.Session.ReadyForUserPrompt);
+            _walletConnect.OpenDeepLink();
+#endif
             PluginManager.Instance.ShowQRCodeScreen(qrCodeSprite);
         }
 

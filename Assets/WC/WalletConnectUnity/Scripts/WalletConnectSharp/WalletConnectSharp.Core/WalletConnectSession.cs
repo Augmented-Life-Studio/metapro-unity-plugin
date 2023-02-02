@@ -49,7 +49,7 @@ namespace WalletConnectSharp.Core
 
         public string Key => this._key;
 
-        public string URI
+        public string  URI
         {
             get
             {
@@ -59,6 +59,7 @@ namespace WalletConnectSharp.Core
                 var keyEncoded = WebUtility.UrlEncode(_key);
 
                 return "wc:" + topicEncode + "@" + versionEncode + "?bridge=" + bridgeUrlEncode + "&key=" + keyEncoded;
+                
                 // return "metapro://wc?uri=wc:" + topicEncode + "@" + versionEncode + "?bridge=" + bridgeUrlEncode + "&key=" + keyEncoded;
             }
         }

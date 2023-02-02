@@ -501,7 +501,7 @@ namespace WalletConnectSharp.Unity
         {
 #if UNITY_ANDROID
             var signingURL = ConnectURL.Split('@')[0];
-
+            
             Application.OpenURL(signingURL);
 #elif UNITY_IOS
             if (SelectedWallet == null)

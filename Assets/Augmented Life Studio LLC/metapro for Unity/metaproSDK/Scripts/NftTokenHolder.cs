@@ -80,6 +80,7 @@ public class NftTokenHolder : MonoBehaviour
         }
         else
         { 
+#if UNITY_EDITOR
             Debug.Log("Downloaded GIF texture");
             var relativePath = "Assets/downloadedGif"+ _nftTokenData.tokenId +".gif";
             ByteArrayToFile(relativePath, www.downloadHandler.data);
@@ -109,6 +110,7 @@ public class NftTokenHolder : MonoBehaviour
             Sprite spriteImage = (Sprite)AssetDatabase.LoadAssetAtPath(relativePath, typeof(Sprite));
             image.sprite = spriteImage;
             _nftTokenData.texture = spriteImage.texture;
+#endif
             ShowToken(true);
             IsSetupCompleted = true;
         }

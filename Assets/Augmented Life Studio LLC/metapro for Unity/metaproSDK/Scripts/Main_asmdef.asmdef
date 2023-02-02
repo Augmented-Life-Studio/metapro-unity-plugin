@@ -1,0 +1,20 @@
+{
+    "name": "Main_asmdef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:dbd1e57eb7fa1494796d31511d775a4a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:537c66ab619ea034fb67f703efea6bd4",
+        "GUID:9160cf3ea7468fb4289a9f2ab3d51131",
+        "GUID:655a0a3ca68984d4b885603ad722a3e7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
