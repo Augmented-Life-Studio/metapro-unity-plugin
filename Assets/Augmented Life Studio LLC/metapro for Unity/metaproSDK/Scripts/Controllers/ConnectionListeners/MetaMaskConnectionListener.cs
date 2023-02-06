@@ -11,7 +11,9 @@ namespace metaproSDK.Scripts.Controllers.ConnectionListeners
         public void OnMetaMaskConnectRequest(string url)
         {
             var qrCodeSprite = QRCodeImamgeHandler.GenerateQRCode(url);
+#if UNITY_ANDROID || UNITY_IOS
             Application.OpenURL($"https://metamask.app.link/dapp/wc?uri={url}");
+#endif
             PluginManager.Instance.ShowQRCodeScreen(qrCodeSprite);
         }
 

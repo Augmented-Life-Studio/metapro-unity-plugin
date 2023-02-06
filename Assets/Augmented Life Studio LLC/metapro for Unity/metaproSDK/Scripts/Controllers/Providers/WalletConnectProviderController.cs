@@ -44,12 +44,12 @@ namespace metaproSDK.Scripts.Controllers
         {
             StartCoroutine(DelayConnectionStart());
         }
-
+    
         private IEnumerator DelayConnectionStart()
         {
             yield return new WaitUntil(() => _walletConnect != null && _walletConnect.isConnectionStarted);
             var qrCodeSprite = QRCodeImamgeHandler.GenerateQRCode(_walletConnect.Session.URI);
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
             yield return new WaitUntil(() => _walletConnect.Session.ReadyForUserPrompt);
             if (ProviderType == WalletProviderType.METAPRO)
             {
