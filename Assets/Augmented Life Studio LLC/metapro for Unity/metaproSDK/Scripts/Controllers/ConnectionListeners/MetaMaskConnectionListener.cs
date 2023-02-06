@@ -11,7 +11,7 @@ namespace metaproSDK.Scripts.Controllers.ConnectionListeners
         public void OnMetaMaskConnectRequest(string url)
         {
             var qrCodeSprite = QRCodeImamgeHandler.GenerateQRCode(url);
-            Application.OpenURL($"https://metamask.app.link/dapp/https://www.metapromarket.com");
+            Application.OpenURL($"https://metamask.app.link/dapp/wc?uri={url}");
             PluginManager.Instance.ShowQRCodeScreen(qrCodeSprite);
         }
 

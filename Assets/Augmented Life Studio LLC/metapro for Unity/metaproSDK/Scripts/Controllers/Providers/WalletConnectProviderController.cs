@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Threading.Tasks;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
 using UnityEngine;
 using WalletConnectSharp.Core.Models;
 using WalletConnectSharp.Unity;
-using WalletConnectSharp.Unity.Models;
 
 namespace metaproSDK.Scripts.Controllers
 {
     public class WalletConnectProviderController : ProviderController
     {
         private WalletConnect _walletConnect;
+        private bool _applicationPauseStatus;
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            _applicationPauseStatus = pauseStatus;
+        }
 
         public override void Initialize()
         {
@@ -23,6 +27,10 @@ namespace metaproSDK.Scripts.Controllers
 
         private void OnConnectionStarted(WCSessionData arg0)
         {
+            if (_applicationPauseStatus && loggedToServer)
+            {
+                return;
+            }
             PluginManager.Instance.OnWalletConnected();
         }
 
@@ -43,7 +51,14 @@ namespace metaproSDK.Scripts.Controllers
             var qrCodeSprite = QRCodeImamgeHandler.GenerateQRCode(_walletConnect.Session.URI);
 #if UNITY_ANDROID
             yield return new WaitUntil(() => _walletConnect.Session.ReadyForUserPrompt);
-            _walletConnect.OpenDeepLink();
+            if (ProviderType == WalletProviderType.METAPRO)
+            {
+                Application.OpenURL($"metapro://wc?uri={_walletConnect.Session.URI}");
+            }
+            else
+            {
+                _walletConnect.OpenDeepLink();
+            }
 #endif
             PluginManager.Instance.ShowQRCodeScreen(qrCodeSprite);
         }
@@ -56,6 +71,10 @@ namespace metaproSDK.Scripts.Controllers
         private IEnumerator SignLogin()
         {
             yield return new WaitForSeconds(1f);
+            if (loggedToServer)
+            {
+                yield break;
+            }
             var wallet = WalletConnect.ActiveSession.Accounts[0].ToLower();
             
             var hash = "";
@@ -71,6 +90,7 @@ namespace metaproSDK.Scripts.Controllers
             yield return StartCoroutine(MetaproServerRequests.LoginWallet(wallet, loginSignature, hash, value => userData = value));
 
             PluginManager.Instance.SetupUserData(userData);
+            loggedToServer = true;
         }
 
         public override void DisconnectWallet()

@@ -266,7 +266,7 @@ namespace WalletConnectSharp.Unity
             
             #if UNITY_ANDROID || UNITY_IOS
             //Whenever we send a request to the Wallet, we want to open the Wallet app
-            Session.OnSend += (sender, session) => OpenMobileWallet();
+            // Session.OnSend += (sender, session) => OpenMobileWallet();
             #endif
         }
 

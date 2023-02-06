@@ -7,6 +7,7 @@ namespace metaproSDK.Scripts.Controllers
     public class ProviderController : MonoBehaviour
     {
         public WalletProviderType ProviderType;
+        protected bool loggedToServer;
 
         private void Start()
         {

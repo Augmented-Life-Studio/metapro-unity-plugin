@@ -39,7 +39,6 @@ namespace metaproSDK.Scripts.Controllers
         [SerializeField] private Transform userNftObjectsParent;
         [SerializeField] private Transform appNftObjectsParent;
         [SerializeField] private NftTokenHolder nftObjectPrefab;
-        [SerializeField] private NftTokenHolder nftObjectPrefabMobile;
 
         private bool _userNftGenerated;
         private bool _appNftGenerated;
@@ -188,11 +187,8 @@ namespace metaproSDK.Scripts.Controllers
                 }
 
                 NftTokenHolder nftObject;
-#if UNITY_ANDROID
-                nftObject = Instantiate(nftObjectPrefabMobile, parentObject);
-#else
                 nftObject = Instantiate(nftObjectPrefab, parentObject);
-#endif
+
                 nftObject.Setup(nftTokenData);
                 listToHoldObjects.Add(nftObject);
             }
