@@ -99,7 +99,7 @@ namespace metaproSDK.Scripts
 
             yield return getAppAssets.SendWebRequest();
 
-            if (getAppAssets.isNetworkError || getAppAssets.isHttpError)
+            if (getAppAssets.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogError(getAppAssets.error);
                 Debug.LogError(getAppAssets.downloadHandler.text);
@@ -116,7 +116,7 @@ namespace metaproSDK.Scripts
             
             yield return getNfts.SendWebRequest();
 
-            if (getNfts.isNetworkError || getNfts.isHttpError)
+            if (getNfts.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogError(getNfts.error);
                 yield break;
