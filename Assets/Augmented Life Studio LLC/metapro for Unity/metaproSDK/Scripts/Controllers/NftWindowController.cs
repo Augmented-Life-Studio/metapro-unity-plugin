@@ -29,8 +29,8 @@ public class NftWindowController : MonoBehaviour
 
     [Header("Window setup")] 
     [SerializeField] private Color nftInWalletColor;
-
     [SerializeField] private Color nftNotInWalletColor;
+    [SerializeField] private GameObject sendTokenButton;
 
     private void OnEnable()
     {
@@ -60,11 +60,13 @@ public class NftWindowController : MonoBehaviour
             {
                 nftInWalletImage.material.color = nftInWalletColor;
                 nftInWalletText.text = "In my wallet";
+                sendTokenButton.SetActive(true);
                 break;
             }
 
             nftInWalletImage.material.color = nftNotInWalletColor;
             nftInWalletText.text = "Not on wallet";
+            sendTokenButton.SetActive(false);
         }
     }
 }

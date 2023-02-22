@@ -40,6 +40,7 @@ namespace metaproSDK.Scripts.Controllers
         [SerializeField] private Transform appNftObjectsParent;
         [SerializeField] private NftTokenHolder nftObjectPrefab;
 
+
         private bool _userNftGenerated;
         private bool _appNftGenerated;
         private bool _userNftsVisible;
@@ -199,6 +200,7 @@ namespace metaproSDK.Scripts.Controllers
             assetsListObject.SetActive(true);
             nftCardObject.SetActive(false);
             backButtonObject.SetActive(false);
+            PluginManager.Instance.selectedNft = null;
         }
 
         public void ShowNftCard()
@@ -253,6 +255,11 @@ namespace metaproSDK.Scripts.Controllers
                     tokenHolder.gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void SendSelectedToken()
+        {
+            PluginManager.Instance.SendSafeTransfer();
         }
     }
 }

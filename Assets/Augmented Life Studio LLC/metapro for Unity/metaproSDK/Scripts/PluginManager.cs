@@ -2,18 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using metaproSDK.Scripts.Controllers;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto.Digests;
+using Org.BouncyCastle.Utilities.Encoders;
 using Serialization;
 using UnityEngine;
 using UnityEngine.Networking;
+using WalletConnectSharp.Core.Models.Ethereum;
+using WalletConnectSharp.Unity;
 
 namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
+        [SerializeField] private SafeTransferFrom.SafeTransferFrom safeTransferFromPrefab;
         public readonly string PluginVersion = "0.1.1";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
@@ -49,7 +56,7 @@ namespace metaproSDK.Scripts
         public WalletProviderType SelectedWalletProvider => selectedWalletProvider;
         private ProviderController _providerController;
         
-
+        
         private void Start()
         {
             userNfts = new List<NftTokenData>();
@@ -168,6 +175,14 @@ namespace metaproSDK.Scripts
                     nftTokenData.supply = nftUserTokensResult.token._quantity;
                     nftTokenData.chain = ChainTypeExtension.GetChainById(nftUserTokensResult.chainId);
                     
+                    UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(nftTokenData.imageUrl);
+                    yield return textureRequest.SendWebRequest();
+                    if (textureRequest.result == UnityWebRequest.Result.Success)
+                    {
+                        Texture texture = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture;
+                        nftTokenData.texture = texture;
+                    }
+                    
                     foreach (var tokenProperty in nftUserTokensResult.token.properties)
                     {
                         if (tokenProperty.key == "asset_category")
@@ -205,5 +220,13 @@ namespace metaproSDK.Scripts
             _providerController.DisconnectWallet();
             userWindowController.ShowProviderScreen();
         }
+
+        public void SendSafeTransfer()
+        {
+            userWindowController.HideAllScreens();
+            var safeTransferFrom = Instantiate(safeTransferFromPrefab);
+            safeTransferFrom.SetupTransfer(selectedNft);
+        }
+
     }
 }
