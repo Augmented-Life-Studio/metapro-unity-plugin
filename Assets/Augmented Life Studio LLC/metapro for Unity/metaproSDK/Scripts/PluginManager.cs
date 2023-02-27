@@ -2,25 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using metaproSDK.Scripts.Controllers;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
 using Newtonsoft.Json;
-using Org.BouncyCastle.Crypto.Digests;
-using Org.BouncyCastle.Utilities.Encoders;
 using Serialization;
 using UnityEngine;
 using UnityEngine.Networking;
-using WalletConnectSharp.Core.Models.Ethereum;
-using WalletConnectSharp.Unity;
 
 namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
-        [SerializeField] private SafeTransferFrom.SafeTransferFrom safeTransferFromPrefab;
         public readonly string PluginVersion = "0.1.1";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
@@ -219,13 +212,6 @@ namespace metaproSDK.Scripts
         {
             _providerController.DisconnectWallet();
             userWindowController.ShowProviderScreen();
-        }
-
-        public void SendSafeTransfer()
-        {
-            userWindowController.HideAllScreens();
-            var safeTransferFrom = Instantiate(safeTransferFromPrefab);
-            safeTransferFrom.SetupTransfer(selectedNft);
         }
 
     }

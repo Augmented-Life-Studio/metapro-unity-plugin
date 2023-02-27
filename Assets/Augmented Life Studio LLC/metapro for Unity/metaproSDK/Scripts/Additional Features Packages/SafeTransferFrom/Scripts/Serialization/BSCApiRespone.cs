@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace metaproSDK.Scripts.SafeTransferFrom.Serialization
+namespace metaproSDK.Scripts.AFP.SafeTransferFrom.Serialization
 {
     [Serializable]
     public class BSCApiRespone

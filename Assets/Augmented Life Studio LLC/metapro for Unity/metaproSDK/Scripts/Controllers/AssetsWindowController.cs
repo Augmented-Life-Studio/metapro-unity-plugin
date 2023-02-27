@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using metaproSDK.Scripts.Serialization;
@@ -8,7 +7,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using WalletConnectSharp.Unity.Models;
 
 namespace metaproSDK.Scripts.Controllers
 {
@@ -255,11 +253,6 @@ namespace metaproSDK.Scripts.Controllers
                     tokenHolder.gameObject.SetActive(false);
                 }
             }
-        }
-
-        public void SendSelectedToken()
-        {
-            PluginManager.Instance.SendSafeTransfer();
         }
     }
 }

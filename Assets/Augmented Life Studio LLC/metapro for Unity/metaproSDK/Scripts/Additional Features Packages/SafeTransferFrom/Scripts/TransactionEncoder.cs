@@ -2,7 +2,7 @@
 using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Utilities.Encoders;
 
-namespace metaproSDK.Scripts.SafeTransferFrom
+namespace metaproSDK.Scripts.AFP.SafeTransferFrom
 {
     public class TransactionEncoder
     {

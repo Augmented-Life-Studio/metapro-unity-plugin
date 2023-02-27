@@ -1,4 +1,4 @@
-﻿namespace metaproSDK.Scripts.SafeTransferFrom
+﻿namespace metaproSDK.Scripts.AFP.SafeTransferFrom
 {
     public enum SafeTransferFromState
     {

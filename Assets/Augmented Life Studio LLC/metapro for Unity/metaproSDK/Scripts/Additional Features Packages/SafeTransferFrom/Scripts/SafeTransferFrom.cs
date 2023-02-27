@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
-using metaproSDK.Scripts.SafeTransferFrom.Serialization;
+using metaproSDK.Scripts.AFP.SafeTransferFrom.Serialization;
 using metaproSDK.Scripts.Serialization;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 using WalletConnectSharp.Core.Models.Ethereum;
 using WalletConnectSharp.Unity;
 
-namespace metaproSDK.Scripts.SafeTransferFrom
+namespace metaproSDK.Scripts.AFP.SafeTransferFrom
 {
     public class SafeTransferFrom : MonoBehaviour
     {
@@ -92,6 +92,12 @@ namespace metaproSDK.Scripts.SafeTransferFrom
         public void SetState(SafeTransferFromState newState)
         {
             _currentState = newState;
+        }
+
+        public void OpenInitialState()
+        {
+            _currentState = SafeTransferFromState.Initial;
+            OpenView();
         }
 
         public void SendSelectedToken()

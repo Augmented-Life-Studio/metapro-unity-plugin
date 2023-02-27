@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace metaproSDK.Scripts.SafeTransferFrom
+namespace metaproSDK.Scripts.AFP.SafeTransferFrom
 {
     public class ErrorPopupView : MonoBehaviour
     {

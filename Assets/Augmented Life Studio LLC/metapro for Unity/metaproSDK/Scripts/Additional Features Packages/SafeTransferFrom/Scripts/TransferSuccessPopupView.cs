@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace metaproSDK.Scripts.SafeTransferFrom
+namespace metaproSDK.Scripts.AFP.SafeTransferFrom
 {
     public class TransferSuccessPopupView : MonoBehaviour
     {
