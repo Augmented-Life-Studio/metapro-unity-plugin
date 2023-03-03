@@ -15,8 +15,7 @@ namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
-        [SerializeField] private SafeTransferFrom safeTransferFromPrefab;
-        public readonly string PluginVersion = "0.1.2";
+        public readonly string PluginVersion = "0.1.3";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
         [SerializeField] private UserWindowController userWindowController;
@@ -56,13 +55,6 @@ namespace metaproSDK.Scripts
         private string TEST_SERVER_URL = "https://test-api.metaproprotocol.com";
         private string PROD_SERVER_URL = "https://api.metaproprotocol.com";
         public string ServerRequestUrl => IsTestnetSelected ? TEST_SERVER_URL : PROD_SERVER_URL;
-
-        public void SendNFT()
-        {
-            var safeTrasnfer = Instantiate(safeTransferFromPrefab);
-            safeTrasnfer.SetupTransfer(selectedNft);
-            safeTrasnfer.SendSelectedToken();
-        }
         
         private void Start()
         {
