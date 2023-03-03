@@ -1,6 +1,6 @@
 ﻿namespace metaproSDK.Scripts.Serialization
 {
-    public class NftProrpertyResult
+    public class NftPropertyResult
     {
         public string key;
         public object value;

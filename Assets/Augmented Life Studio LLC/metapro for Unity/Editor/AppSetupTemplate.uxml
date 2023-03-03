@@ -2,49 +2,31 @@
     <ui:Box name="main_container">
         <ui:Box name="images">
             <ui:Box name="gradient">
-                <ui:Image style="--unity-image: url(\images/elipseGradient.png)" name="gradient" />
+                <ui:Image name="gradient" style="--unity-image: url(&apos;project://database/Assets/Augmented%20Life%20Studio%20LLC/metapro%20for%20Unity/Editor/images/elipseGradient.png?fileID=21300000&amp;guid=8f84d041b37944b4695049a1087de136&amp;type=3#elipseGradient&apos;);" />
             </ui:Box>
             <ui:Box name="mustache">
-                <ui:Image style="--unity-image: url(\images/mustache.png)" name="mustache" />
+                <ui:Image name="mustache" style="--unity-image: url(&apos;project://database/Assets/Augmented%20Life%20Studio%20LLC/metapro%20for%20Unity/Editor/images/mustache.png?fileID=21300000&amp;guid=5f3ea76e06fa9a149809cecf460d9feb&amp;type=3#mustache&apos;);" />
             </ui:Box>
             <ui:Box name="sword">
-                <ui:Image style="--unity-image: url(\images/sword.png)" name="sword" />
+                <ui:Image name="sword" style="--unity-image: url(&apos;project://database/Assets/Augmented%20Life%20Studio%20LLC/metapro%20for%20Unity/Editor/images/sword.png?fileID=21300000&amp;guid=381ad4c11ac3f5d47b2ed8a82b38a3c1&amp;type=3#sword&apos;);" />
             </ui:Box>
             <ui:Box name="hat">
-                <ui:Image style="--unity-image: url(\images/hat.png)" name="hat" />
+                <ui:Image name="hat" style="--unity-image: url(&apos;project://database/Assets/Augmented%20Life%20Studio%20LLC/metapro%20for%20Unity/Editor/images/hat.png?fileID=21300000&amp;guid=3f5b678ffd9a2c546b30c32378447033&amp;type=3#hat&apos;);" />
             </ui:Box>
         </ui:Box>
         <ui:Box name="content_container">
-            <ui:Image style="--unity-image: url(\images/metaproLogo.png)" name="metapro_logo" />
+            <ui:Image name="metapro_logo" style="--unity-image: url(&apos;project://database/Assets/Augmented%20Life%20Studio%20LLC/metapro%20for%20Unity/Editor/images/metaproLogo.png?fileID=21300000&amp;guid=06261d40289dca54ab1e4b8245851d70&amp;type=3#metaproLogo&apos;);" />
             <ui:Label name="text" text="metapro unity wizard" />
-            
             <ui:Box name="input">
-                <ui:TextField name="styled_input" picking-mode="Ignore" label="" text="Enter app key" />
-                <ui:Button name="paste_input" text="Paste"/> 
+                <ui:TextField name="styled_input" picking-mode="Ignore" text="Enter app key" />
+                <ui:Button name="paste_input" text="Paste" />
             </ui:Box>
+            <ui:Label name="text_second" text="Choose chain net:" />
+            <ui:DropdownField name="styled_dropdown" choices="BNB Mainnet,BNB Testnet" style="background-color: rgba(192, 192, 192, 0); border-left-color: rgba(0, 0, 0, 255); border-right-color: rgba(0, 0, 0, 255); border-top-color: rgba(0, 0, 0, 255); border-bottom-color: rgba(0, 0, 0, 255);" />
             <ui:Box name="button_box">
-                <ui:Button name="button" text="Import app"/>
+                <ui:Button name="button" text="Import app" />
             </ui:Box>
         </ui:Box>
-        <ui:Box name="items">
-        </ui:Box>
-<!--&lt;!&ndash;        <ui:Image name="logo" />&ndash;&gt;-->
-<!--        <ui:Box name="properties">-->
-<!--            <ui:TextField name="appKey" picking-mode="Ignore" label="App-key" value="" text="Enter app key from dev console" />-->
-<!--        </ui:Box>-->
-<!--        <ui:Box name="buttons">-->
-<!--            <ui:Button name="setup-button" text="Setup App" />-->
-<!--            <ui:Button name="download_button" text="Download assigned content" />-->
-<!--        </ui:Box>-->
-<!--        <ui:Box name="items">-->
-<!--            <ui:Box name="item">-->
-<!--                <ui:Image name="item-image"/>-->
-<!--                <ui:Label name="item-name" text="Item 123" />-->
-<!--                <ui:Button name="item-button" text="Download" />-->
-<!--            </ui:Box>-->
-<!--            <ui:Box name="item" />-->
-<!--            <ui:Box name="item" />-->
-<!--            <ui:Box name="item" />-->
-<!--        </ui:Box>-->
+        <ui:Box name="items" />
     </ui:Box>
 </ui:UXML>

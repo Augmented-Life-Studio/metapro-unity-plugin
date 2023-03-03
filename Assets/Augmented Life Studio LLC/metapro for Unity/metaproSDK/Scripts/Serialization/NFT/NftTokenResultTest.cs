@@ -1,6 +1,6 @@
 ﻿namespace metaproSDK.Scripts.Serialization
 {
-    public class NftTokenResult
+    public class NftTokenResultTest
     {
         public int _tokenId;
         public string image;
@@ -8,6 +8,6 @@
         public string tokenName;
         public string description;
         public int _quantity;
-        public NftPropertyResult[] properties;
+        public NftPropertyResultTest properties;
     }
 }

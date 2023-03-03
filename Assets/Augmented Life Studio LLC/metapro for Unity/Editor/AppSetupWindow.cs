@@ -20,11 +20,13 @@ public class AppSetupWindow : EditorWindow
     private TemplateContainer importedContainer;
     private StyleSheet importedStyleSheet;
 
-    private static string PROD_URL = "";
+    private static string PROD_URL = "";        //https://api.metaproprotocol.com/ms/nft
+    private static string TEST_URL = "test-";   //https://test-api.metaproprotocol.com/ms/nft
 
     private string _requestURL = PROD_URL;
     
     private MetaproAppSetup _metaproAppSetup;
+    private DropdownField chainDropdown;
     
     [MenuItem("Tools/Metapro SDK Setup")]
     public static void ShowWindow()
@@ -103,7 +105,8 @@ public class AppSetupWindow : EditorWindow
         var pasteButton = rootVisualElement.Query<Button>("paste_input").First();
         pasteButton.clicked -= PasteButtonOnClicked;
         pasteButton.clicked += PasteButtonOnClicked;
-        
+
+        chainDropdown = rootVisualElement.Query<DropdownField>("styled_dropdown").First();
     }
 
     private IEnumerator ShowItemsView()
@@ -268,7 +271,12 @@ public class AppSetupWindow : EditorWindow
 
     private string DownloadFile(string bucketHash, int tokenId, string itemId)
     {
-        var channel = new Channel("prd-pod-1.metaprotocol.one:8181", ChannelCredentials.Insecure);
+        var podURL = "prd-pod-1";
+        if (_metaproAppSetup.SelectedChain.Contains("Testnet"))
+        {
+            podURL = "tst-pod-2";
+        }
+        var channel = new Channel(podURL + ".metaprotocol.one:8181", ChannelCredentials.Insecure);
 
         var client = new Storage.StorageClient(channel);
         
@@ -364,6 +372,13 @@ public class AppSetupWindow : EditorWindow
     {
         var appKey = rootVisualElement.Query<TextField>("styled_input").First();
         var appKeyValue = appKey.value;
+        _metaproAppSetup.SelectedChain = chainDropdown.value;
+        
+        _requestURL = PROD_URL;
+        if (_metaproAppSetup.SelectedChain.Contains("Testnet"))
+        {
+            _requestURL = TEST_URL;
+        }
         
         using (UnityWebRequest www = UnityWebRequest.Get("https://" + _requestURL + "api.metaproprotocol.com/ms/apps/v1/apps/appkey/" + appKeyValue))
         {
@@ -375,6 +390,7 @@ public class AppSetupWindow : EditorWindow
             }
             else
             {
+                
                 _metaproAppSetup.GameKey = appKeyValue;
                 
                 var appItemsResult = JsonConvert.DeserializeObject<AppItemsResult>(www.downloadHandler.text);

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using metaproSDK.Scripts.AFP.SafeTransferFrom;
 using metaproSDK.Scripts.Controllers;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
@@ -14,6 +15,7 @@ namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
+        [SerializeField] private SafeTransferFrom safeTransferFromPrefab;
         public readonly string PluginVersion = "0.1.2";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
@@ -48,7 +50,19 @@ namespace metaproSDK.Scripts
         private WalletProviderType selectedWalletProvider;
         public WalletProviderType SelectedWalletProvider => selectedWalletProvider;
         private ProviderController _providerController;
-        
+
+        public bool IsTestnetSelected => metaproAppSetup.SelectedChain.Contains("Testnet");
+
+        private string TEST_SERVER_URL = "https://test-api.metaproprotocol.com";
+        private string PROD_SERVER_URL = "https://api.metaproprotocol.com";
+        public string ServerRequestUrl => IsTestnetSelected ? TEST_SERVER_URL : PROD_SERVER_URL;
+
+        public void SendNFT()
+        {
+            var safeTrasnfer = Instantiate(safeTransferFromPrefab);
+            safeTrasnfer.SetupTransfer(selectedNft);
+            safeTrasnfer.SendSelectedToken();
+        }
         
         private void Start()
         {
@@ -81,14 +95,14 @@ namespace metaproSDK.Scripts
             _userData.accessToken = userData.accessToken;
             _userData.tokenType = userData.tokenType;
             
-            var url = "https://api.metaproprotocol.com/ms/nft/v1/user/" + _userData.wallet +
+            var url = ServerRequestUrl + "/ms/nft/v1/user/" + _userData.wallet +
                       "/tokens?_items=true&sort%5Btoken.creationBlock%5D=desc";
             StartCoroutine(GetUserNFT(url));
         }
-
+        
         public IEnumerator GetApplicationNFT()
         {
-            var getAppAssets = UnityWebRequest.Get("https://api.metaproprotocol.com/ms/teams/v1/items?appId=" + metaproAppSetup.AppId);
+            var getAppAssets = UnityWebRequest.Get(ServerRequestUrl + "/ms/teams/v1/items?appId=" + metaproAppSetup.AppId);
 
             yield return getAppAssets.SendWebRequest();
 
@@ -103,7 +117,7 @@ namespace metaproSDK.Scripts
 
 
             var nftParams = String.Join('&', appAssets.results.Select(a => "tokenIds=" + a._tokenId).ToList());
-            var requestUrl = "https://api.metaproprotocol.com/ms/nft/v1/tokens?" + nftParams;
+            var requestUrl = ServerRequestUrl + "/ms/nft/v1/tokens?" + nftParams;
             
             UnityWebRequest getNfts = UnityWebRequest.Get(requestUrl);
             
@@ -114,27 +128,57 @@ namespace metaproSDK.Scripts
                 Debug.LogError(getNfts.error);
                 yield break;
             }
-            var appNftResults = JsonConvert.DeserializeObject<Results<NftUserTokensResult>>(getNfts.downloadHandler.text);
-            
-            foreach (var nftTokensResult in appNftResults.results)
+            Debug.Log(getNfts.downloadHandler.text);
+
+            if (IsTestnetSelected)
             {
-                var nftTokenData = new NftTokenData();
-                nftTokenData.tokenId = nftTokensResult.token._tokenId;
-                nftTokenData.quantity = nftTokensResult.token._quantity;
-                nftTokenData.imageUrl = nftTokensResult.token.image;
-                nftTokenData.tokenName = nftTokensResult.token.tokenName;
-                nftTokenData.standard = nftTokensResult.standard;
-                nftTokenData.contract = nftTokensResult.token.address;
-                nftTokenData.supply = nftTokensResult.token._quantity;
-                nftTokenData.chain = ChainTypeExtension.GetChainById(nftTokensResult.chainId);
-                foreach (var tokenProperty in nftTokensResult.token.properties)
+                var appNftResult = JsonConvert.DeserializeObject<Results<NftUserTokenResultTest>>(getNfts.downloadHandler.text);
+                
+                foreach (var nftTokensResult in appNftResult.results)
                 {
-                    if (tokenProperty.key == "asset_category")
+                    var nftTokenData = new NftTokenData();
+                    nftTokenData.tokenId = nftTokensResult.token._tokenId;
+                    nftTokenData.quantity = nftTokensResult.token._quantity;
+                    nftTokenData.imageUrl = nftTokensResult.token.image;
+                    nftTokenData.tokenName = nftTokensResult.token.tokenName;
+                    nftTokenData.standard = nftTokensResult.standard;
+                    nftTokenData.contract = nftTokensResult.token.address;
+                    nftTokenData.supply = nftTokensResult.token._quantity;
+                    nftTokenData.chain = ChainTypeExtension.GetChainById(nftTokensResult.chainId);
+                    foreach (var tokenProperty in nftTokensResult.token.properties.common.standard)
                     {
-                        nftTokenData.category = (string)tokenProperty.value;
+                        if (tokenProperty.key == "asset_category")
+                        {
+                            nftTokenData.category = (string)tokenProperty.value;
+                        }
                     }
+                    applicationNfts.Add(nftTokenData);
                 }
-                applicationNfts.Add(nftTokenData);
+            }
+            else
+            {
+                var appNftResult = JsonConvert.DeserializeObject<Results<NftUserTokensResult>>(getNfts.downloadHandler.text);
+                    
+                foreach (var nftTokensResult in appNftResult.results)
+                {
+                    var nftTokenData = new NftTokenData();
+                    nftTokenData.tokenId = nftTokensResult.token._tokenId;
+                    nftTokenData.quantity = nftTokensResult.token._quantity;
+                    nftTokenData.imageUrl = nftTokensResult.token.image;
+                    nftTokenData.tokenName = nftTokensResult.token.tokenName;
+                    nftTokenData.standard = nftTokensResult.standard;
+                    nftTokenData.contract = nftTokensResult.token.address;
+                    nftTokenData.supply = nftTokensResult.token._quantity;
+                    nftTokenData.chain = ChainTypeExtension.GetChainById(nftTokensResult.chainId);
+                    foreach (var tokenProperty in nftTokensResult.token.properties)
+                    {
+                        if (tokenProperty.key == "asset_category")
+                        {
+                            nftTokenData.category = (string)tokenProperty.value;
+                        }
+                    }
+                    applicationNfts.Add(nftTokenData);
+                }
             }
         }
 
@@ -151,40 +195,81 @@ namespace metaproSDK.Scripts
             }
             else
             {
-                var nftTokenResult = JsonConvert.DeserializeObject<Results<NftUserTokensResult>>(www.downloadHandler.text);
-                foreach (var nftUserTokensResult in nftTokenResult.results)
+                if (IsTestnetSelected)
                 {
-                    var nftTokenData = new NftTokenData();
-                    nftTokenData.tokenId = nftUserTokensResult.token._tokenId;
-                    if (nftUserTokensResult.owners.Length != 0)
+                    var nftTokenResult = JsonConvert.DeserializeObject<Results<NftUserTokenResultTest>>(www.downloadHandler.text);
+                    foreach (var nftUserTokensResult in nftTokenResult.results)
                     {
-                        nftTokenData.quantity = nftUserTokensResult.owners[0]._quantity;
-                    }
-
-                    nftTokenData.imageUrl = nftUserTokensResult.token.image;
-                    nftTokenData.tokenName = nftUserTokensResult.token.tokenName;
-                    nftTokenData.standard = nftUserTokensResult.standard;
-                    nftTokenData.contract = nftUserTokensResult.token.address;
-                    nftTokenData.supply = nftUserTokensResult.token._quantity;
-                    nftTokenData.chain = ChainTypeExtension.GetChainById(nftUserTokensResult.chainId);
-                    
-                    UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(nftTokenData.imageUrl);
-                    yield return textureRequest.SendWebRequest();
-                    if (textureRequest.result == UnityWebRequest.Result.Success)
-                    {
-                        Texture texture = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture;
-                        nftTokenData.texture = texture;
-                    }
-                    
-                    foreach (var tokenProperty in nftUserTokensResult.token.properties)
-                    {
-                        if (tokenProperty.key == "asset_category")
+                        var nftTokenData = new NftTokenData();
+                        nftTokenData.tokenId = nftUserTokensResult.token._tokenId;
+                        if (nftUserTokensResult.owners.Length != 0)
                         {
-                            nftTokenData.category = (string)tokenProperty.value;
+                            nftTokenData.quantity = nftUserTokensResult.owners[0]._quantity;
                         }
-                    }
+
+                        nftTokenData.imageUrl = nftUserTokensResult.token.image;
+                        nftTokenData.tokenName = nftUserTokensResult.token.tokenName;
+                        nftTokenData.standard = nftUserTokensResult.standard;
+                        nftTokenData.contract = nftUserTokensResult.token.address;
+                        nftTokenData.supply = nftUserTokensResult.token._quantity;
+                        nftTokenData.chain = ChainTypeExtension.GetChainById(nftUserTokensResult.chainId);
                     
-                    userNfts.Add(nftTokenData);
+                        UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(nftTokenData.imageUrl);
+                        yield return textureRequest.SendWebRequest();
+                        if (textureRequest.result == UnityWebRequest.Result.Success)
+                        {
+                            Texture texture = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture;
+                            nftTokenData.texture = texture;
+                        }
+                    
+                        foreach (var tokenProperty in nftUserTokensResult.token.properties.common.standard)
+                        {
+                            if (tokenProperty.key == "asset_category")
+                            {
+                                nftTokenData.category = (string)tokenProperty.value;
+                            }
+                        }
+                    
+                        userNfts.Add(nftTokenData);
+                    }
+                }
+                else
+                {
+                    var nftTokenResult = JsonConvert.DeserializeObject<Results<NftUserTokensResult>>(www.downloadHandler.text);
+                    foreach (var nftUserTokensResult in nftTokenResult.results)
+                    {
+                        var nftTokenData = new NftTokenData();
+                        nftTokenData.tokenId = nftUserTokensResult.token._tokenId;
+                        if (nftUserTokensResult.owners.Length != 0)
+                        {
+                            nftTokenData.quantity = nftUserTokensResult.owners[0]._quantity;
+                        }
+
+                        nftTokenData.imageUrl = nftUserTokensResult.token.image;
+                        nftTokenData.tokenName = nftUserTokensResult.token.tokenName;
+                        nftTokenData.standard = nftUserTokensResult.standard;
+                        nftTokenData.contract = nftUserTokensResult.token.address;
+                        nftTokenData.supply = nftUserTokensResult.token._quantity;
+                        nftTokenData.chain = ChainTypeExtension.GetChainById(nftUserTokensResult.chainId);
+                    
+                        UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(nftTokenData.imageUrl);
+                        yield return textureRequest.SendWebRequest();
+                        if (textureRequest.result == UnityWebRequest.Result.Success)
+                        {
+                            Texture texture = ((DownloadHandlerTexture)textureRequest.downloadHandler).texture;
+                            nftTokenData.texture = texture;
+                        }
+                    
+                        foreach (var tokenProperty in nftUserTokensResult.token.properties)
+                        {
+                            if (tokenProperty.key == "asset_category")
+                            {
+                                nftTokenData.category = (string)tokenProperty.value;
+                            }
+                        }
+                    
+                        userNfts.Add(nftTokenData);
+                    }
                 }
             }
             userWindowController.ShowAssetsScreen();

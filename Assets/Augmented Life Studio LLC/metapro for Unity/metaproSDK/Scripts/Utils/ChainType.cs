@@ -4,7 +4,7 @@ namespace metaproSDK.Scripts.Utils
 {
     public enum ChainType
     {
-        BNB, ETH, POLYGON, NONE
+        BNB, BNB_TEST, ETH, POLYGON, NONE
     }
 
     public class ChainTypeExtension
@@ -19,6 +19,10 @@ namespace metaproSDK.Scripts.Utils
             {
                 return ChainType.BNB;
             }
+            if (chainId == 97)
+            {
+                return ChainType.BNB_TEST;
+            }
             if (chainId == 137)
             {
                 return ChainType.POLYGON;
@@ -31,8 +35,12 @@ namespace metaproSDK.Scripts.Utils
         {
             switch (chainType)
             {
+                case ChainType.NONE:
+                    return "None";
                 case ChainType.BNB:
                     return "BNB Chain";
+                case ChainType.BNB_TEST:
+                    return "BNB Testnet";
                 case ChainType.ETH:
                     return "ETH Chain";
                 case ChainType.POLYGON:

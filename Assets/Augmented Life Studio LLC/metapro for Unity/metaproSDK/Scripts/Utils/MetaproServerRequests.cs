@@ -12,10 +12,12 @@ namespace metaproSDK.Scripts.Utils
 {
     public class MetaproServerRequests
     {
-        private const string baseUrl = "https://api.metaproprotocol.com";
-
-        public static IEnumerator GetHashss(string wallet, Action<string> result)
+        private static string prodURL = "https://api.metaproprotocol.com";
+        private static string testURL = "https://test-api.coinswap.space";
+        
+        public static IEnumerator GetLoginHash(string wallet, Action<string> result)
         {
+            var baseUrl = PluginManager.Instance.IsTestnetSelected ? testURL : prodURL;
             UnityWebRequest www = UnityWebRequest.Get(baseUrl + "/users-service/auth/signature/hash");
             www.SetRequestHeader("X-Account-wallet", wallet);
             yield return www.SendWebRequest();
@@ -51,6 +53,7 @@ namespace metaproSDK.Scripts.Utils
 
             var body = JsonConvert.SerializeObject(loginBody);
             byte[] bytes = Encoding.UTF8.GetBytes(body);
+            var baseUrl = PluginManager.Instance.IsTestnetSelected ? testURL : prodURL;
             UnityWebRequest www = UnityWebRequest.Post(baseUrl + "/users-service/auth/login", body);
             www.uploadHandler = new UploadHandlerRaw(bytes);
             www.SetRequestHeader("X-Account-wallet", wallet);

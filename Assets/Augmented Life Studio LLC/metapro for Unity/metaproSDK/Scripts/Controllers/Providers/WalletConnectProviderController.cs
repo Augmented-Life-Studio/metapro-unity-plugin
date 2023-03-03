@@ -78,7 +78,7 @@ namespace metaproSDK.Scripts.Controllers
             var wallet = WalletConnect.ActiveSession.Accounts[0].ToLower();
             
             var hash = "";
-            yield return  StartCoroutine(MetaproServerRequests.GetHashss(wallet, value => hash = value));
+            yield return  StartCoroutine(MetaproServerRequests.GetLoginHash(wallet, value => hash = value));
 
             var verifyMessage = $"Please sign to let us verify\nthat you are the owner of this address\n{wallet}\n\nRequest ID {hash}";
             

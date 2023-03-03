@@ -23,6 +23,7 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
         private bool _isOpened;
         
         private const string _smartContractAddress = "0xa293D68684Be29540838Dc8A0222De0c43c6b5B4";
+        private const string _smartContractTestAddress = "0x91945dcd15b44eb33de4d00897843c1ee524fa88";
         private const string _functionSignature = "safeTransferFrom(address,address,uint256,uint256,bytes)";
 
         private SafeTransferFromState _currentState;
@@ -137,7 +138,14 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
             TransactionData data = new TransactionData();
 
             data.from = WalletConnect.ActiveSession.Accounts[0];
-            data.to = _smartContractAddress;
+            if (PluginManager.Instance.IsTestnetSelected)
+            {
+                data.to = _smartContractTestAddress;
+            }
+            else
+            {
+                data.to = _smartContractAddress;
+            }
             data.data = transactionHashData;
 
             var task = Task.Run(async () => await WalletConnect.ActiveSession.EthSendTransaction(data));
@@ -163,7 +171,10 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
             }
             
             var txHash = task.Result;
-            var requestUrl = $"https://api.bscscan.com/api?module=transaction" +
+
+            var bscApi = PluginManager.Instance.IsTestnetSelected ? "https://api-testnet.bscscan.com" : "https://api.bscscan.com";
+            
+            var requestUrl = $"{bscApi}/api?module=transaction" +
                              $"&action=getstatus" +
                              $"&txhash={txHash}" +
                              $"&apikey={bscApiKey}";
@@ -183,7 +194,8 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
             }
             
             SetState(SafeTransferFromState.Transaction_Success);
-            transactionSucceedView.Setup(_nftTokenData, transferPopupView.ToAddress, transferPopupView.Amount, "https://bscscan.com/tx/" + txHash);
+            var txApi = PluginManager.Instance.IsTestnetSelected ? "https://testnet.bscscan.com/tx/" : "https://bscscan.com/tx/";
+            transactionSucceedView.Setup(_nftTokenData, transferPopupView.ToAddress, transferPopupView.Amount, txApi + txHash);
             OpenView();
         }
 
