@@ -15,7 +15,7 @@ namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
-        public readonly string PluginVersion = "0.1.3";
+        public readonly string PluginVersion = "0.2.0";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
         [SerializeField] private UserWindowController userWindowController;
