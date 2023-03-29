@@ -1,26 +1,13 @@
-# NFT Bundler
+### BSCMAINNET
+- Phoenix - https://bscscan.com/address/0xC34901363cAB85274908C38Ea3A3Aa6f072554B0#code
 
 ## Run Tests
 
 Compile solidity contracts and run the test suite with:
-
 ```shell
-npx hardhat test test/MetaproINS.js
+npx hardhat compile
 ```
 
-## Deploy
-
 ```shell
-yarn deploy --network kovan
+npx hardhat test test/Phoenix.js
 ```
-
-MetaproINS
-npx hardhat run deploy/deployINS.js --network testnet
-npx hardhat verify -_tokenAddress- -_busdAddress- -_treasuryAddress- --contract contracts/MetaproINS.sol:MetaproINS --network testnet
-## Hardhat Commands
-
-```shell
-npx hardhat run deploy/deployMetaproRoyalty.js --network testnet
-```
-## Scripts
-To run scripts properly we need to install higher version of ethers package ^6.0.0
