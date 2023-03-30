@@ -276,7 +276,10 @@ public class AppSetupWindow : EditorWindow
         {
             podURL = "tst-pod-2";
         }
-        var channel = new Channel(podURL + ".metaprotocol.one:8181", ChannelCredentials.Insecure);
+        
+        var channelOptionList = new List<ChannelOption>();
+        channelOptionList.Add(new ChannelOption(ChannelOptions.MaxMessageLength,int.MaxValue));
+        var channel = new Channel(podURL + ".metaprotocol.one:8181", ChannelCredentials.Insecure, channelOptionList);
 
         var client = new Storage.StorageClient(channel);
         
@@ -379,6 +382,8 @@ public class AppSetupWindow : EditorWindow
         {
             _requestURL = TEST_URL;
         }
+        
+        Debug.Log("https://" + _requestURL + "api.metaproprotocol.com/ms/apps/v1/apps/appkey/");
         
         using (UnityWebRequest www = UnityWebRequest.Get("https://" + _requestURL + "api.metaproprotocol.com/ms/apps/v1/apps/appkey/" + appKeyValue))
         {

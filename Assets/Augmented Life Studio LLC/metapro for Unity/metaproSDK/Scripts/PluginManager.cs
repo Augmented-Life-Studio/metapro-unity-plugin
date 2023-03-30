@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using metaproSDK.Scripts.AFP.SafeTransferFrom;
 using metaproSDK.Scripts.Controllers;
 using metaproSDK.Scripts.Serialization;
 using metaproSDK.Scripts.Utils;
@@ -15,7 +14,7 @@ namespace metaproSDK.Scripts
 {
     public class PluginManager : Singleton<PluginManager>
     {
-        public readonly string PluginVersion = "0.2.0";
+        public readonly string PluginVersion = "1.0.0";
 
         [SerializeField] private MetaproAppSetup metaproAppSetup;
         [SerializeField] private UserWindowController userWindowController;

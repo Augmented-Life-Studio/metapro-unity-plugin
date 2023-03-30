@@ -30,11 +30,18 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
         
         public static string EncodeParam(WalletAddress walletAddress)
         {
-            return SimpleStringEncoding(walletAddress.value.Substring(2));
+            return SimpleStringEncoding(walletAddress.value.ToLower().Substring(2));
         }
         
         public static string EncodeParam(int integer)
         {
+            string hexValue = integer.ToString("X");
+            return SimpleStringEncoding(hexValue);
+        }
+        
+        public static string EncodeParam(bool boolean)
+        {
+            var integer = boolean ? 1 : 0;
             string hexValue = integer.ToString("X");
             return SimpleStringEncoding(hexValue);
         }
@@ -44,6 +51,13 @@ namespace metaproSDK.Scripts.AFP.SafeTransferFrom
             return "00000000000000000000000000000000000000000000000000000000000000a0" +
                    "0000000000000000000000000000000000000000000000000000000000000001" +
                    "0000000000000000000000000000000000000000000000000000000000000000";
+        }
+        
+        public static string EncodeLastCompleteQuestBytes()
+        {
+            return "0000000000000000000000000000000000000000000000000000000000000040" +
+                   "0000000000000000000000000000000000000000000000000000000000000001" +
+                   "0100000000000000000000000000000000000000000000000000000000000000";
         }
     }
 }
